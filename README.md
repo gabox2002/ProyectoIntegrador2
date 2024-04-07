@@ -2,7 +2,7 @@
 ![](https://github.com/gabox2002/proyectointegrador2/blob/master/src/assets/images/imagen-previa.jpg)
 
 
-- [Visita el proyecto en línea desde netlify](https://proyectointegrador2.netlify.app/)
+[Visita el proyecto en línea desde netlify](https://proyectointegrador2.netlify.app/)
 
 
 # Getting Started with Create React App
