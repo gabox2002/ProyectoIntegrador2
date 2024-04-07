@@ -1,0 +1,20 @@
+
+.contact__container, .home__container, .about__container  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center ;
+    align-items: center;
+    margin: 20px 0 100px 0;
+    height: 100%; 
+    
+    h2 {
+        color: $Very-Dark-Blue;
+        margin-bottom: 10px;
+        font-family: "matura", sans-serif;
+        font-weight: 400;
+        text-decoration: underline;
+    }
+}
+.home__container, .about__container  {
+    margin: 20px 0 0 0;
+}

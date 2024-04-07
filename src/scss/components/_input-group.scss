@@ -1,0 +1,11 @@
+.input-group__container {
+    display: flex;
+    flex-direction: column;
+    .input-group__input {
+        background-color: $white;
+        border: 2px solid $terciary-color;
+        border-radius: 0.25rem;
+        font-size: $font-size-sm;
+        padding: 0.25rem;
+    }
+}

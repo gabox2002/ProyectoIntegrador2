@@ -1,0 +1,163 @@
+@import "../utilities/mixins.scss";
+
+/* Sección historia, misión y visión */
+.history {
+    background-color: hsl(207deg, 100%, 98%);
+    @include section-style;
+    @media (min-width: 1115px) {
+        flex-direction: row-reverse;
+    }
+    img {
+        margin-bottom: 0;
+    }
+    &__description--title {
+        font-family: "matura", sans-serif;
+        font-weight: lighter;
+    }
+    &__description--content{
+        padding: 0 20px;
+    }
+}
+
+.mission {
+    background-color: hsl(0, 0%, 100%);
+    @include section-style;
+    @media (min-width: 1115px) {
+        flex-direction: row;
+    }
+    &__description--title {
+        font-family: "matura", sans-serif;
+        font-weight: lighter;
+    }
+    &__description--content{
+        padding: 0 20px;
+    }
+}
+
+.comunity {
+    background-color: hsl(207deg, 100%, 98%);
+    @include section-style;
+    @media (min-width: 1115px) {
+        flex-direction: row-reverse;
+    }
+    &__description--title {
+        font-family: "matura", sans-serif;
+        font-weight: lighter;
+    }
+    &__description--content{
+        padding: 0 20px;
+    }
+}
+
+/* Sección de enlace al cátalogo */
+.visit {
+    background-color: hsl(0, 0%, 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    padding: 0px 0;
+    @media (min-width: 1115px) {
+        height: 400px;
+    }
+    &--title {
+        font-family: "matura", sans-serif;
+        font-weight: lighter;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    a {
+        text-decoration: none;
+    }
+    &--button {
+        margin: 0 auto;
+        button {
+            @include button;
+        }
+    }
+}
+.about__button {
+    width: 7rem;
+    padding: 10px;
+    background-color: lighten(dodgerblue, 20%);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+        background-color: #007bff;
+    }
+    &:last-child {
+        margin: 10px;
+    }
+}
+/* Equipo de trabajo */
+.team {
+    background-color: hsl(207deg, 100%, 98%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 700px;
+    padding: 0px 0;
+    @media (min-width: 1115px) {
+        height: 500px;
+    }
+    &__title {
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+        font-family: "matura", sans-serif;
+        font-weight: lighter;
+        
+    }
+
+    &__members {
+        display: grid;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0px;
+        @media (min-width: 1115px) {
+            display: flex;
+            flex-direction: row;
+            padding: 0 150px;
+            justify-content: center;
+            align-items: center;
+            gap: 0px;
+        }
+        &__member {
+            margin-bottom: 0px;
+            width: 100%;
+            margin-bottom: 30px;
+
+            &--photo {
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                margin-bottom: 10px;
+                object-fit: cover;
+            }
+
+            &--name {
+                font-family: "Poppins", sans-serif;
+                font-size: 1.2em;
+                margin-bottom: 8px;
+            }
+
+            &--position {
+                font-family: "Open Sans", sans-serif;
+                font-size: 0.9em;
+                color: #777;
+            }
+        }
+    }
+}

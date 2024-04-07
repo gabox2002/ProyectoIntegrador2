@@ -1,0 +1,25 @@
+
+.scroll-to-top-container {
+    position: fixed;
+    bottom: 50px; 
+    left: 50px; 
+    z-index: 90; 
+}
+
+.scroll-to-top-button {
+    color: hsl(224, 93%, 68%);
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border: none;
+    background-color: transparent;
+    font-size: larger;
+    &:hover{
+        color: hsl(224, 90%, 55%);
+    }
+}
+
+.scroll-to-top-button.visible {
+    opacity: 1;
+}

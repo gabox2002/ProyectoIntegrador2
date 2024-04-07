@@ -1,0 +1,74 @@
+@mixin section-style {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0 20px 0;
+
+    @media (min-width: 1115px) {
+        justify-content: space-around;
+        height: 450px;
+        width: 100%;
+    }
+
+    &__image {
+        img {
+            width: 246px;
+            margin-bottom: 7px;
+
+            @media (min-width: 1115px) {
+                width: 527px;
+                margin-bottom: 0;
+            }
+        }
+
+        @media (min-width: 1115px) {
+            width: 527px;
+            margin-bottom: 78px;
+        }
+    }
+
+    &__description {
+        &--title {
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 12px;
+
+            @media (min-width: 1115px) {
+                font-size: 1.5em;
+                text-align: left;
+                margin-left: 20px;
+                margin-bottom: 12px;
+            }
+        }
+
+        &--content {
+            text-align: center;
+            font-size: 0.9em;
+            width: 280px;
+
+            @media (min-width: 1115px) {
+                text-align: left;
+                font-size: 1em;
+                width: 495px;
+            }
+        }
+    }
+}
+@mixin button {
+    background-color: $Bright-Blue-hover;
+    width: 200px;
+    height: 57px;
+    border-radius: 8px;
+    border: none;
+    color: $white;
+    font-size: 0.9em;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    &:hover {
+        cursor: pointer;
+        opacity: 0.5;
+    }
+}

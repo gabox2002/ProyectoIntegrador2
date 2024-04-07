@@ -1,0 +1,32 @@
+@import "./abstracts/variables";
+
+
+@import "./base/base";
+
+@import "./components/card";
+@import "./components/cart";
+@import "./components/counter";
+@import "./components/form";
+@import "./components/input-group";
+@import "./components/socialmedia";
+@import "./components/modal";
+@import "./components/login";
+@import "./components/bars";
+@import "./components/scroll-to-top";
+
+@import "./layout/footer";
+@import "./layout/navbar";
+@import "./pages/contact";
+@import "./pages/upload";
+@import "./pages/about";
+
+@import "./utilities/mixins";
+
+@font-face {
+    font-family: "matura";
+    src: url("../assets/fonts/Matura.ttf") format("truetype");
+}
+@font-face {
+    font-family: "kalam";
+    src: url("../assets/fonts//Kalam.ttf") format("truetype");
+}

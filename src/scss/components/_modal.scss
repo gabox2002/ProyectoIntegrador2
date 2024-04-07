@@ -1,0 +1,52 @@
+.modal__overlay {
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $background-overlay;
+    font-size: 14px;
+    z-index: 1100; 
+
+    .modal__container {
+        width: auto;
+        background-color: $white;
+        overflow-y: auto;
+        padding: 1rem;
+
+        .modal__header {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            border-bottom: 1px solid hsl(220deg, 14%, 75%);
+            p {
+                font-size: large;
+                font-family: "matura", sans-serif;
+                color: $Very-Dark-Blue;
+                margin-right: 10px;
+                &:hover {
+                    color: $Bright-Blue-hover;
+                }
+            }
+            .modal__close {
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                transition: color 0.3s ease;
+                color: lighten($Very-Dark-Blue, 20%);
+                font-weight: bold;
+                font-size: larger;
+
+                &:hover {
+                    color: $Bright-Blue-hover;
+                }
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+}
+

@@ -1,0 +1,44 @@
+.modal__bars {
+    .bars__navbar-btn {
+        display: block;
+        border: none;
+        background-color: transparent;
+        font-size: 1.25rem;
+        height: 2.5rem;
+        width: 2.5rem;
+        color: $black;
+        
+
+        &:hover {
+            color: $Bright-Blue-hover;
+            
+        }
+        @media (min-width: 768px) {
+            display: none;
+        }
+    }
+    .modal__overlay {
+        .modal__container {
+            .modal__content {
+                border-bottom: 1px solid hsl(220deg, 14%, 75%);
+                @media (min-width: 1115px) {
+                    display: block;
+                }
+                .navbar__link-modal {
+                    text-decoration: none;
+                    color: $Dark-grayish-blue;
+                    display: flex; 
+                    align-items: center; 
+                    padding: 10px 0; 
+                    margin: 20px 0 0px 40px;
+                    font-size: 16px; 
+                    transition: color 0.3s ease; 
+                    &:hover {
+                        color: $Bright-Blue-hover;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}

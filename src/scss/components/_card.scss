@@ -1,0 +1,62 @@
+.card__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+    width: 100%;
+    .card__container {
+        background-color: $white;
+        border: 2px solid $black;
+        border-radius: 0.75rem;
+        color: $black;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin: 1rem;
+        text-align: start;
+        width: 150px;
+        height: 340px;
+        margin-top: 40px;
+        .card__data {
+            padding: 0 1rem;
+            text-align: center;
+            h2 {
+                padding: 0;
+                margin: 8px 0 8px 0;
+            }
+            .shortDesc {
+                padding: 0;
+                margin: 0;
+                white-space: wrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                line-height: 20px;
+                max-height: 80px;
+                width: 120px;
+                p {
+                    margin: 0;
+                }
+            }
+            .precio {
+                p {
+                    margin: 15px 0;
+                    font-size: large;
+                }
+            }
+            span {
+                p {
+                    margin: 0 10px;
+                    padding-bottom: 5px;
+                }
+            }
+            .category {
+                margin-bottom: 0px;
+                margin-top: 5px;
+            }
+        }
+        img {
+            width: 100%;
+            border-radius: 0.75rem 0.75rem 0 0;
+        }
+    }
+}
