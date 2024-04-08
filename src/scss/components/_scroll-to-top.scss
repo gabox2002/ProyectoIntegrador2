@@ -1,25 +1,26 @@
-
 .scroll-to-top-container {
     position: fixed;
-    bottom: 50px; 
-    left: 50px; 
-    z-index: 90; 
-}
-
-.scroll-to-top-button {
-    color: hsl(224, 93%, 68%);
-    width: 20px;
-    height: 20px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    border: none;
-    background-color: transparent;
-    font-size: larger;
-    &:hover{
-        color: hsl(224, 90%, 55%);
+    bottom: 50px;
+    left: 50px;
+    z-index: 90;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .scroll-to-top-button {
+        color: hsl(224, 93%, 68%);
+        opacity: 0;
+        &.visible {
+            opacity: 1;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: hsl(224, 90%, 55%);
+            border: none;
+            color: white;
+            font-size: 16px;
+            text-align: center;
+            line-height: 10px;
+            cursor: pointer;
+        }
     }
-}
-
-.scroll-to-top-button.visible {
-    opacity: 1;
 }

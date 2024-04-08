@@ -4,8 +4,10 @@
 .history {
     background-color: hsl(207deg, 100%, 98%);
     @include section-style;
-    @media (min-width: 1115px) {
+    @media (min-width: 768px) {
         flex-direction: row-reverse;
+        height: 350px;
+
     }
     img {
         margin-bottom: 0;
@@ -22,8 +24,10 @@
 .mission {
     background-color: hsl(0, 0%, 100%);
     @include section-style;
-    @media (min-width: 1115px) {
+    @media (min-width: 768px) {
         flex-direction: row;
+        height: 350px;
+
     }
     &__description--title {
         font-family: "matura", sans-serif;
@@ -37,8 +41,10 @@
 .comunity {
     background-color: hsl(207deg, 100%, 98%);
     @include section-style;
-    @media (min-width: 1115px) {
+    @media (min-width: 768px) {
         flex-direction: row-reverse;
+        height: 350px;
+
     }
     &__description--title {
         font-family: "matura", sans-serif;
@@ -58,8 +64,8 @@
     align-items: center;
     height: 200px;
     padding: 0px 0;
-    @media (min-width: 1115px) {
-        height: 400px;
+    @media (min-width: 768px) {
+        height: 350px;
     }
     &--title {
         font-family: "matura", sans-serif;
@@ -104,7 +110,7 @@
     align-content: center;
     height: 700px;
     padding: 0px 0;
-    @media (min-width: 1115px) {
+    @media (min-width: 768px) {
         height: 500px;
     }
     &__title {
@@ -126,7 +132,7 @@
         text-align: center;
         grid-template-columns: repeat(2, 1fr);
         gap: 0px;
-        @media (min-width: 1115px) {
+        @media (min-width: 768px) {
             display: flex;
             flex-direction: row;
             padding: 0 150px;

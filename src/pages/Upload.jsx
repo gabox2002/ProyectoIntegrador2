@@ -1,9 +1,10 @@
-import Form from '../components/Form';
+import Text from '../components/Text'
+import Form from '../components/Form'
 
 function Upload() {
     return (
         <div className="upload-container">
-            <h2>Alta de Producto</h2>
+            <Text renderAs="h2" content="Alta de Producto"/>
             <Form mostrarFormAlta={true} buttonLabel="Enviar" />
         </div>
     );

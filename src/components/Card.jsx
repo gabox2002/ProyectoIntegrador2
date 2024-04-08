@@ -16,11 +16,11 @@ function Card({
             <div className='card__data'>
                 <h2>{name} </h2>
                 <div className='precio'>
-                    <p>${price}</p>
+                    <p>$ {price}</p>
                 </div>
-                <span><Counter id={id}/></span>
+                <Counter id={id}/>
                 <div className='category'>
-                    <b>{category}</b>
+                    <p>Category: <span>{category}</span></p>
                 </div>
                 <div className='shortDesc'>
                     <p>{shortDesc}</p>

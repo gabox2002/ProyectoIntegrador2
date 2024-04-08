@@ -1,4 +1,3 @@
-
 .cart__container {
     position: relative;
     .cart__navbar-button {
@@ -30,149 +29,150 @@
     }
 }
 .modal__overlay {
-        .modal__container {
-            .modal__content {
+    .modal__container {
+        display: flex;
+            flex-direction: column;
+            align-items: center;
+        .modal__content {
+            display: flex;
+            flex-direction: column;
+            align-items: right;
+            width: 280px;
+            .modal__product {
                 display: flex;
-                flex-direction: column;
-                align-items: right;
-                width: 280px;
-                .modal__product {
-                    display: flex;
-                    align-items: center;
-                    padding: 0;
-                    border-bottom: 1px solid hsl(220deg, 14%, 75%);
-                }
-                
-                .modal__product-image {
-                    width: 120px;
-                    height: 120px;
-                    margin-right: 0px;
-                }
-                .modal__product-details {
-                    width: 170px;
-                    height: 140px;
-                    margin-left: 20px;
-                    .modal__product-detail {
+                align-items: center;
+                padding: 0;
+                border-bottom: 1px solid hsl(220deg, 14%, 75%);
+            }
+
+            .modal__product-image {
+                width: 120px;
+                height: 120px;
+                margin-right: 0px;
+            }
+            .modal__product-details {
+                width: 170px;
+                height: 140px;
+                margin-left: 20px;
+                .modal__product-detail {
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
                     align-items: flex-start;
-                        .modal__title {
-                            padding: 0.8rem 0 0 0;
-                            display: flex;
-                            justify-content: space-between;
-                            width: 100%;
-                            font-size: 18px;
-                            .product-name {
-                                font-weight: bold;
-                                align-self: flex-start; 
-                                margin: 0;
-                                color: $Very-Dark-Blue;
+                    .modal__title {
+                        padding: 0.8rem 0 0 0;
+                        display: flex;
+                        justify-content: space-between;
+                        width: 100%;
+                        font-size: 18px;
+                        .product-name {
+                            font-weight: bold;
+                            align-self: flex-start;
+                            margin: 0;
+                            color: $Very-Dark-Blue;
+                        }
+                        .trash-button {
+                            color: lighten(#ff5733, 20%);
+                            background-color: transparent;
+                            border: none;
+                            transition: color 0.3s ease;
+                            &:hover {
+                                color: #ff5733;
+                            }
+                        }
+                    }
+                    .modal__product-price {
+                        p {
+                            margin: 8px 0;
+                            span {
+                                font-weight: lighter;
+                                color: $black;
+                            }
+                        }
+                    }
 
+                    .modal__product-subtotal {
+                        p {
+                            font-style: italic;
+                            margin: 8px 0 1.1rem 0;
+                            color: $Very-Dark-Blue;
+                            span {
+                                font-weight: lighter;
+                                color: $black;
                             }
-                            .trash-button {
-                                color: lighten(#ff5733, 20%);
-                                background-color: transparent;
-                                border: none;
-                                transition: color 0.3s ease;
-                                &:hover {
-                                    color: #ff5733;
-                                }
-                            }
-                        }
-                        .modal__product-price {
-                            p {
-                                margin: 8px 0;
-                                color: $Dark-grayish-blue;
-                                span{
-                                    font-weight: lighter;
-                                    color: $black; 
-                                }
-                            }
-                        }
-                        
-                        .modal__product-subtotal {
-                            p {
-                                font-style: italic;
-                                margin: 8px 0 1.1rem 0;
-                                color: $Dark-grayish-blue;
-                                span{
-                                    font-weight: lighter;
-                                    color: $black; 
-                                }
-                            }
-    
                         }
                     }
                 }
-                .modal__total-container {
+            }
+            .modal__total-container {
+                text-align: right;
+                padding-bottom: 0.2rem;
+                padding-right: 2rem;
+
+                p {
+                    font-weight: bold;
+                    margin: 1.5rem 0;
                     text-align: right;
-                    padding-bottom: 0.2rem;
-                    padding-right: 2rem;
-                    
-                    p {
-                        font-weight: bold;
-                        margin: 1.5rem 0;
-                        text-align: right;
-                        span {
-                            color: $black;
-                        }
+                    span {
+                        color: $black;
                     }
                 }
-                .modal__cupon{
-                    display: flex;
-                    justify-content: center;
-                    margin-bottom: 20px;
-                    text-align: center;
-                    gap: 0px;
-                    height: 1.75rem;
-                    .cupon-input{
-                        width: 110px;
-                        font-size: 0.70rem;
-    
-    
-                    }
-                    .cupon-btn {
-                        background-color: $Bright-Blue-hover;
-                        border: none;
-                        border-radius: 0.1rem;
-                        color: $white;
-                        font-size: 0.70rem;
-                        width: auto;
-                        &:hover {
-                            background-color: lighten($color:$Very-Dark-Blue, $amount: 20);
-                        }
+            }
+            .modal__cupon {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 20px;
+                text-align: center;
+                gap: 0px;
+                height: 1.75rem;
+                .cupon-input {
+                    width: 110px;
+                    font-size: 0.7rem;
+                }
+                .cupon-btn {
+                    background-color: $Bright-Blue-hover;
+                    border: none;
+                    border-radius: 0.1rem;
+                    color: $white;
+                    font-size: 0.7rem;
+                    width: auto;
+                    &:hover {
+                        background-color: lighten(
+                            $color: $Very-Dark-Blue,
+                            $amount: 20
+                        );
                     }
                 }
-                .modal__buttons {
-                    display: flex;
-                    justify-content: center;
-                    gap: 20px;
-                    .clear__button {
-                        background-color: lighten(#dc3545, 20%); 
-                        color: white;
-                        border: none;
-                        padding: 10px 20px;
-                        border-radius: 5px;
-                        cursor: pointer;
-                        transition: background-color 0.3s ease;
-                        &:hover {
-                            background-color: #c82333;
-                        }
+            }
+            .modal__buttons {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                .clear__button {
+                    background-color: lighten(#dc3545, 20%);
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                    &:hover {
+                        background-color: #c82333;
                     }
-                    .checkout__button {
-                        background-color: lighten(#28a745, 20%); 
-                        color: white;
-                        border: none;
-                        padding: 10px 20px;
-                        border-radius: 5px;
-                        cursor: pointer;
-                        transition: background-color 0.3s ease;
-                        &:hover {
-                            background-color: #218838;
-                        }
+                }
+                .checkout__button {
+                    background-color: lighten(#28a745, 20%);
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                    &:hover {
+                        background-color: #218838;
                     }
                 }
             }
         }
     }
+}

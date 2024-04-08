@@ -36,7 +36,6 @@ function ScrollToTopButton() {
             className={`scroll-to-top-button ${isVisible ? 'visible' : ''}`}
             action={scrollToTop}
             title="Ir arriba"
-            style={{ width: '20px', height: '20px' }} 
         />
     );
 }

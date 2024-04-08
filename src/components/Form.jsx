@@ -24,6 +24,7 @@ const Form = ({ mostrarFormAlta, mostrarFormContacto, mostrarFormLogin, buttonLa
     const [errorFields, setErrorFields] = useState([]);
     const [imagenCargada, setImagenCargada] = useState(false);
 
+
     const handleSubmit = (event) => {
         event.preventDefault();
         setLoading(true);
@@ -90,7 +91,10 @@ const Form = ({ mostrarFormAlta, mostrarFormContacto, mostrarFormLogin, buttonLa
                     setStock("");
                     setEnvioGratis(false);
                     setFoto(null);
-                    alert("El formulario se envió exitosamente!");
+                    setImagenCargada(false); 
+                    setTimeout(() => {
+                        alert("El formulario se envió exitosamente!");
+                    }, 1000); 
                 });
         } else {
             alert(
@@ -156,12 +160,28 @@ const Form = ({ mostrarFormAlta, mostrarFormContacto, mostrarFormLogin, buttonLa
     const validarFoto = (foto) => {
         return foto !== null; 
     };
-    // Función modificada para actualizar el estado de la imagen cargada
+
     const handleFotoChange = (event) => {
         const file = event.target.files[0];
-        setFoto(file);
-        setImagenCargada(true); 
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif']; 
+    
+        if (file) {
+            if (allowedTypes.includes(file.type)) {
+                setFoto(file);
+                setImagenCargada(true);
+                setErrorFields(prevErrorFields => prevErrorFields.filter(field => field !== "foto")); 
+            } else {
+                setErrorFields(prevErrorFields => [...prevErrorFields, "foto"]); 
+            }
+        }else {
+            setImagenCargada(false); // Actualiza el estado de la imagen cargada si no se selecciona ningún archivo
+        }
     };
+    
+
+
+
+
     return (
         <form className="form__container" onSubmit={handleSubmit}>
             {mostrarFormContacto && (
@@ -321,16 +341,15 @@ const Form = ({ mostrarFormAlta, mostrarFormContacto, mostrarFormLogin, buttonLa
                         validationIcon={errorFields.includes("stock") || stock !== "" ? validarStock(stock) ? faCheck : faTimes : null }
                         errorMessage={(errorFields.includes("stock") || (stock !== "" && !validarStock(stock))) && !validarStock(stock) ? "*El stock debe ser un número mayor que cero" : "" }
                     />
-                    
-                    <InputGroup
+                   
+                   <InputGroup
                         id="foto"
                         inputLabel="Agregar foto:"
                         inputType="file" 
                         onChange={handleFotoChange} 
                         validationIcon={errorFields.includes("foto") || foto !== null  ? validarFoto(foto) ? faCheck : faTimes : null }
-                        errorMessage={(errorFields.includes("foto") || (foto !== null  && !validarFoto(foto))) && !validarFoto(foto) ? "*Debe seleccionar una foto" : "" } 
+                        errorMessage={errorFields.includes("foto") && !validarFoto(foto) ? "*Debe seleccionar una una imagen válida (JPEG, PNG o GIF)" : "" } // Mostrar un mensaje de error personalizado si no se selecciona una imagen válida
                     />
-                   
 
                     <div>
                         <label style={{ display: "flex" }}>

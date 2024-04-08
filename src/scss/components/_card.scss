@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     margin: 0;
     width: 100%;
     .card__container {
@@ -12,17 +13,48 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        margin: 1rem;
         text-align: start;
         width: 150px;
-        height: 340px;
-        margin-top: 40px;
+        height: 330px;
+        margin: 1.5rem;
+        margin-top: 20px;
+        @media (max-width: 375px) {
+            margin: 0.3rem;
+            margin-top: 10px;
+            width: 145px;
+        }
         .card__data {
-            padding: 0 1rem;
+            padding: 0 0.5rem;
             text-align: center;
+            img {
+                width: 100%;
+                border-radius: 0.75rem 0.75rem 0 0;
+            }
             h2 {
                 padding: 0;
-                margin: 8px 0 8px 0;
+                margin: 15px 0 0 0;
+                color: $Very-Dark-Blue;
+
+            }
+            .precio {
+                p {
+                    margin: 10px 0;
+                    font-size: large;
+                }
+            }
+            .category {
+                margin-bottom: 0px;
+                margin-top: 0px;
+                font-size: small;
+                font-style: italic;                                color: $Dark-grayish-blue;
+                p {
+                    color: $Very-Dark-Blue;
+                    margin: 5px 0;
+                }
+                span {
+                    color: $black;
+                    font-weight: lighter;
+                }
             }
             .shortDesc {
                 padding: 0;
@@ -32,31 +64,12 @@
                 text-overflow: ellipsis;
                 line-height: 20px;
                 max-height: 80px;
-                width: 120px;
+                width: 130px;
                 p {
                     margin: 0;
+                    font-size: small;
                 }
             }
-            .precio {
-                p {
-                    margin: 15px 0;
-                    font-size: large;
-                }
-            }
-            span {
-                p {
-                    margin: 0 10px;
-                    padding-bottom: 5px;
-                }
-            }
-            .category {
-                margin-bottom: 0px;
-                margin-top: 5px;
-            }
-        }
-        img {
-            width: 100%;
-            border-radius: 0.75rem 0.75rem 0 0;
         }
     }
 }

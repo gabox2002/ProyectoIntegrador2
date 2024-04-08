@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { faBars, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom"; 
 import Button from "./Button";
 import Modal from "./Modal";
@@ -31,7 +31,7 @@ function Bars() {
     }, [open]);
 
     const handleClickOutside = (event) => {
-        if (!event.target.closest(".modal__content")) {
+        if (!event.target.closest(".modal__container")) {
             setOpen(false);
         }
     };
@@ -66,14 +66,15 @@ function Bars() {
                     className="bars__navbar-btn"
                     action={handleToggleModal}
                 />
-                <Modal show={open} Close={handleCloseModal}>
+            <Modal show={open} Close={handleCloseModal} direction="left">
                     <div className="modal__header">
+                        <p>Juguetería cósmica</p>
                         <Button
-                            icon={faArrowLeft}
+                            icon={faArrowRight}
                             className="modal__close"
                             action={handleCloseModal}
                         />
-                        <p>Juguetería cósmica</p>
+                        
                     </div>
                     <div className="modal__content">
                         <Link to="/" className="navbar__link-modal" onClick={() => handleLinkClick('/')} > Inicio </Link>

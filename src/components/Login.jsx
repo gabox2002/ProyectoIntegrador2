@@ -169,7 +169,7 @@ function Login() {
     }, [open]);
 
     const handleClickOutside = (event) => {
-        if (!event.target.closest(".modal__content")) {
+        if (!event.target.closest(".modal__container")) {
             setOpen(false);
         }
     };
@@ -201,7 +201,7 @@ function Login() {
                 action={handleToggleModal}
             />
             <div className="modal__login">
-                <Modal show={open} Close={handleCloseModal}>
+                <Modal show={open} Close={handleCloseModal} direction="right">
                     <div className="modal__header">
                         <Button
                             icon={faArrowLeft}

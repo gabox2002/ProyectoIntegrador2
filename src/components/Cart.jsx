@@ -44,7 +44,7 @@ function Cart() {
     }, [open]);
 
     const handleClickOutside = (event) => {
-        if (modalRef.current && !modalRef.current.contains(event.target)) {
+        if (!event.target.closest(".modal__container")) {
             setOpen(false);
         }
     };
@@ -130,7 +130,8 @@ function Cart() {
                     </div>
                 ) : undefined}
             </div>
-            <Modal show={open} onClose={handleCloseModal}>
+            <Modal show={open} Close={handleCloseModal} direction="right">
+
                 <div className="modal__header">
                     <Button
                         icon={faArrowLeft}
