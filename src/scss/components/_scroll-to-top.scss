@@ -7,20 +7,22 @@
     justify-content: center;
     align-items: center;
     .scroll-to-top-button {
-        color: hsl(224, 93%, 68%);
         opacity: 0;
         &.visible {
             opacity: 1;
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            background-color: hsl(224, 90%, 55%);
+            background-color: hsl(224, 93%, 68%);
             border: none;
             color: white;
             font-size: 16px;
             text-align: center;
             line-height: 10px;
             cursor: pointer;
+            &:hover {
+                background-color: hsl(224, 90%, 55%);
+            }
         }
     }
 }

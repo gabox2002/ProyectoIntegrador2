@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { faUser, faArrowLeft, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import {
+    faUser,
+    faArrowLeft,
+    faEye,
+    faEyeSlash,
+} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import Modal from "./Modal";
@@ -14,8 +19,12 @@ function Login() {
     const [correoValido, setCorreoValido] = useState(null);
     const [contraseñaValida, setContraseñaValida] = useState(null);
     const [contraseñaVisible, setContraseñaVisible] = useState(false);
-    const [loading, setLoading] = useState(false); 
-    const [errores, setErrores] = useState({ nombre: "", correo: "", contraseña: "" });
+    const [loading, setLoading] = useState(false);
+    const [errores, setErrores] = useState({
+        nombre: "",
+        correo: "",
+        contraseña: "",
+    });
 
     const handleToggleModal = () => {
         setOpen(!open);
@@ -41,14 +50,14 @@ function Login() {
             setNombreValido(false);
             setErrores({
                 ...errores,
-                nombre: " *El nombre no puede estar vacío y debe tener al menos 3 caracteres."
+                nombre: " *El nombre no puede estar vacío y debe tener al menos 3 caracteres.",
             });
             return false;
         } else {
             setNombreValido(true);
             setErrores({
                 ...errores,
-                nombre: ""
+                nombre: "",
             });
             return true;
         }
@@ -61,14 +70,14 @@ function Login() {
             setCorreoValido(false);
             setErrores({
                 ...errores,
-                correo: " *Ingrese un correo electrónico válido."
+                correo: " *Ingrese un correo electrónico válido.",
             });
             return false;
         } else {
             setCorreoValido(true);
             setErrores({
                 ...errores,
-                correo: ""
+                correo: "",
             });
             return true;
         }
@@ -82,14 +91,15 @@ function Login() {
             setContraseñaValida(false);
             setErrores({
                 ...errores,
-                contraseña: " *La contraseña debe tener al menos 8 caracteres y contener al menos una mayúscula, una minúscula, un número y un carácter especial."
+                contraseña:
+                    " *La contraseña debe tener al menos 8 caracteres y contener al menos una mayúscula, una minúscula, un número y un carácter especial.",
             });
             return false;
         } else {
             setContraseñaValida(true);
             setErrores({
                 ...errores,
-                contraseña: ""
+                contraseña: "",
             });
             return true;
         }
@@ -103,9 +113,9 @@ function Login() {
         const contraseñaValid = validarContraseña(contraseña);
 
         if (nombreValid && correoValid && contraseñaValid) {
-            setLoading(true); 
+            setLoading(true);
             setTimeout(() => {
-                setLoading(false); 
+                setLoading(false);
                 setNombre("");
                 setCorreo("");
                 setContraseña("");
@@ -155,7 +165,7 @@ function Login() {
         }
     }, [open]);
 
-     // Efecto para manejar el clic fuera del modal
+    // Efecto para manejar el clic fuera del modal
     useEffect(() => {
         if (open) {
             document.addEventListener("mousedown", handleClickOutside);
@@ -173,7 +183,7 @@ function Login() {
             setOpen(false);
         }
     };
-    
+
     // Función para manejar el clic en la tecla Escape
     const handleKeyDown = (event) => {
         if (event.keyCode === 27) {
@@ -195,11 +205,13 @@ function Login() {
     }, []);
     return (
         <>
-            <Button
-                icon={faUser}
-                className="login__navbar-button"
-                action={handleToggleModal}
-            />
+            <div className="login__container">
+                <Button
+                    icon={faUser}
+                    className="login__navbar-button"
+                    action={handleToggleModal}
+                />
+            </div>
             <div className="modal__login">
                 <Modal show={open} Close={handleCloseModal} direction="right">
                     <div className="modal__header">
@@ -329,13 +341,14 @@ function Login() {
                                 )}
                             </div>
                             <Button
-                                label={loading ? "Registrando..." : "Registrarse"}
+                                label={
+                                    loading ? "Registrando..." : "Registrarse"
+                                }
                                 type="submit"
                                 className="modal__button registro_btn"
                                 disabled={loading}
                             />
                             <div className="form-divider"></div>
-
                         </form>
                         <Button
                             label="Iniciar Sesión"

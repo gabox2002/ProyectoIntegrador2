@@ -20,10 +20,10 @@ function Card({
                 </div>
                 <Counter id={id}/>
                 <div className='category'>
-                    <p>Category: <span>{category}</span></p>
+                    <p>Categ: <span>{category}</span></p>
                 </div>
                 <div className='shortDesc'>
-                    <p>{shortDesc}</p>
+                    <p>Descrip: <span>{shortDesc}</span></p>
                 </div>
                 {delivery ? <p>Envío sin cargo.</p> : undefined}
             </div>

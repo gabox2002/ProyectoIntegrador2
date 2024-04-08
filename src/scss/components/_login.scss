@@ -1,4 +1,6 @@
-.login__navbar-button {
+.login__container {
+    position: relative;
+    .login__navbar-button {
     background-color: transparent;
     border: none;
     font-size: 1.25rem;
@@ -9,7 +11,7 @@
     &:hover {
         color: $Bright-Blue-hover;
     }
-}
+}}
 
 .modal__login {
     .modal__overlay {

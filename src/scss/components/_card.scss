@@ -49,25 +49,36 @@
                 font-style: italic;                                color: $Dark-grayish-blue;
                 p {
                     color: $Very-Dark-Blue;
-                    margin: 5px 0;
+                    margin: 5px 5px;
+                    font-weight: bold;
+                    text-align: center;
                 }
                 span {
-                    color: $black;
+                    color: $Bright-Blue-hover;
                     font-weight: lighter;
                 }
             }
             .shortDesc {
-                padding: 0;
+                padding: 0 5px;
                 margin: 0;
                 white-space: wrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 line-height: 20px;
-                max-height: 80px;
+                height: 80px;
                 width: 130px;
+                text-align: left;
+                font-style: italic;                                color: $Dark-grayish-blue;
+
                 p {
-                    margin: 0;
                     font-size: small;
+                    color: $Very-Dark-Blue;
+                    margin: 0;
+                    font-weight: bold;
+                }
+                span {
+                    color: $black;
+                    font-weight: lighter;
                 }
             }
         }
