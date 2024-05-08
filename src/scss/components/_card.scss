@@ -5,6 +5,11 @@
     align-items: center;
     margin: 0;
     width: 100%;
+    a {
+        text-decoration: none; 
+        color: inherit; 
+    }
+    
     .card__container {
         background-color: $white;
         border: 2px solid $black;
@@ -14,73 +19,92 @@
         flex-direction: column;
         justify-content: flex-start;
         text-align: start;
-        width: 150px;
-        height: 330px;
-        margin: 1.5rem;
-        margin-top: 20px;
+        width: 200px; 
+        height: 260px; 
+        margin: 1rem;
+
         @media (max-width: 375px) {
+            width: 145px;
+            height: auto; 
             margin: 0.3rem;
             margin-top: 10px;
-            width: 145px;
         }
+
         .card__data {
-            padding: 0 0.5rem;
+            display: flex;
+            flex-direction: column;
+            padding: 0 ;
             text-align: center;
+
             img {
-                width: 100%;
+                width: 100%; 
+                height: auto; 
                 border-radius: 0.75rem 0.75rem 0 0;
             }
+
             h2 {
                 padding: 0;
-                margin: 15px 0 0 0;
+                margin: 5px 0 0 0;
                 color: $Very-Dark-Blue;
+            }
 
-            }
-            .precio {
-                p {
-                    margin: 10px 0;
-                    font-size: large;
-                }
-            }
             .category {
                 margin-bottom: 0px;
                 margin-top: 0px;
                 font-size: small;
-                font-style: italic;                                color: $Dark-grayish-blue;
+
                 p {
                     color: $Very-Dark-Blue;
                     margin: 5px 5px;
                     font-weight: bold;
-                    text-align: center;
+                    text-align: left;
                 }
+
                 span {
                     color: $Bright-Blue-hover;
                     font-weight: lighter;
                 }
             }
-            .shortDesc {
-                padding: 0 5px;
-                margin: 0;
-                white-space: wrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                line-height: 20px;
-                height: 80px;
-                width: 130px;
-                text-align: left;
-                font-style: italic;                                color: $Dark-grayish-blue;
 
-                p {
-                    font-size: small;
-                    color: $Very-Dark-Blue;
-                    margin: 0;
-                    font-weight: bold;
-                }
-                span {
-                    color: $black;
-                    font-weight: lighter;
+            .card__interno {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-content: center;
+                height: 70px;                
+                .precio {
+                    p {
+                        margin: 0px 20px;
+                        font-size: large;
+                        text-align: right;
+                        justify-content: end;
+                   }
+                            }
+                .shortDesc {
+                    padding: 0px;
+                    margin: 0 12px 10px 12px;
+                    white-space: wrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    line-height: 20px;
+                    height: 40px;
+                    width: 180px;
+                    text-align: center;
+
+                    p {
+                        font-size: small;
+                        color: $Very-Dark-Blue;
+                        margin: 0;
+                        font-weight: bold;
+                    }
+
+                    span {
+                        color: $black;
+                        font-weight: lighter;
+                    }
                 }
             }
         }
+        
     }
 }

@@ -1,3 +1,5 @@
+@import "./utilities/mixins";
+
 @import "./abstracts/variables";
 
 
@@ -19,8 +21,8 @@
 @import "./pages/contact";
 @import "./pages/upload";
 @import "./pages/about";
+@import "./pages/details";
 
-@import "./utilities/mixins";
 
 @font-face {
     font-family: "matura";

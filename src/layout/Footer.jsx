@@ -30,8 +30,7 @@ function Footer() {
 
             <div className="footer__copyright">
                 <div>
-                    <p>Proyecto Integrador Etapa 2</p>
-                    <p>Realizado por
+                    <p>Proyecto Integrador Etapa 2 - Realizado por
                     <Button
                         label=" Gabriel Quispe"
                         className="autor__button"

@@ -145,7 +145,7 @@ function Cart() {
                     {moviesCartList.map((movie) => (
                         <div key={movie.id} className="modal__product">
                             <img
-                                src={movie.img}
+                                src={movie.img1}
                                 alt={movie.name}
                                 className="modal__product-image"
                             />

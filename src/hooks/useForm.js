@@ -1,17 +1,29 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-const useForm = () => {
-  const [values, setValues] = useState({});
+export const useForm = (INITIAL_STATE) => {
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setValues({
-      ...values,
-      [name]: value
-    });
-  };
+    const [values, setValues] = useState(INITIAL_STATE);
+    
+    const handleInputChange = e => {
+        if (e.target.type === "file") {
+            setValues({
+                ...values,
+                [e.target.name]: e.target.files[0]
+            })
+        } else {
+            setValues({
+                ...values,
+                [e.target.name]: e.target.type === "checkbox" ? e.target.checked : e.target.value
+            })
+        }
+    }
 
-  return { values, handleChange };
-};
+    const resetForm = () => setValues(INITIAL_STATE)
 
+    return {
+        values,
+        handleInputChange,
+        resetForm
+    }
+}
 export default useForm;

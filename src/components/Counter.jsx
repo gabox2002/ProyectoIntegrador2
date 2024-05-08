@@ -34,6 +34,7 @@ export default function Counter({ id }) {
                 className="counter__btn"
                 action={decrement}
                 disabled={count === 0}
+                title={"Disminuir del carrito"}
             />
             <Text
                 renderAs="p"
@@ -44,6 +45,8 @@ export default function Counter({ id }) {
                 icon={faPlus}
                 className="counter__btn"
                 action={increment}
+                title={"Agregar al carrito"}
+
             />
         </div>
     );
