@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { postFormData } from '../util/api';
+import { postProducts } from '../util/api';
 import InputGroup from './InputGroup';
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Button from './Button';
+import useForm from '../hooks/useFormUpload';
+
 
 function UploadForm({ buttonLabel }) {
     const [nombre, setNombre] = useState("");
@@ -19,6 +21,8 @@ function UploadForm({ buttonLabel }) {
     const [loading, setLoading] = useState(false);
     const [errorFields, setErrorFields] = useState([]);
     const [imagenCargada, setImagenCargada] = useState(false);
+    const { values, setValues } = useForm(); 
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -56,29 +60,45 @@ function UploadForm({ buttonLabel }) {
 
         setErrorFields(camposVacios);
 
+       
         if (camposVacios.length === 0) {
             try {
-                await postFormData(camposAValidar);
+                // Ajustar los datos del formulario antes de enviarlos a la API
+            const adjustedData = {
+                name: values.nombre,
+                price: values.precio,
+                img1: values.foto,
+                stock: values.stock,
+                brand: values.marca,
+                category: values.categoria,
+                shortDesc: values.descripcionCorta,
+                longDesc: values.descripcionLarga,
+                ageFrom: values.edadHasta,
+                ageTo: values.edadDesde
+            };
+                await postProducts(adjustedData);
                 alert('Producto creado exitosamente.');
-
             } catch (error) {
                 console.error('Error al crear el producto:', error);
                 alert('Hubo un error al crear el producto. Por favor, inténtalo de nuevo.');
             } finally {
                 setLoading(false);
                 // Restablece los campos del formulario
-                setNombre("");
-                setPrecio("");
-                setMarca("");
-                setCategoria("");
-                setDescripcionCorta("");
-                setDescripcionLarga("");
-                setEdadDesde("");
-                setEdadHasta("");
-                setStock("");
-                setEnvioGratis(false);
-                setFoto(null);
-                setImagenCargada(false);
+                setValues({
+                    name: "",
+                    email: "",
+                    subject: "",
+                    body: "",
+                    price: "",
+                    img1: "",
+                    stock: "",
+                    brand: "",
+                    category: "",
+                    shortDesc:"",
+                    longDesc:"",
+                    ageFrom: "",
+                    ageTo:"",
+                });
             }
         } else {
             alert(
@@ -151,7 +171,7 @@ function UploadForm({ buttonLabel }) {
                 inputLabel="Nombre:"
                 inputType="text"
                 onChange={(e) => setNombre(e.target.value)}
-                value={nombre}
+                value={values.nombre || ""}
                 validationIcon={
                 errorFields.includes("nombre") || nombre !== "" ? validarNombre(nombre) ? faCheck : faTimes : null }
                 errorMessage={ (errorFields.includes("nombre") || (nombre !== "" && !validarNombre(nombre))) && !validarNombre(nombre) ? "*Debe tener al menos 3 caracteres" : ""}
@@ -161,7 +181,7 @@ function UploadForm({ buttonLabel }) {
                 inputLabel="Precio:"
                 inputType="text"
                 onChange={(e) => setPrecio(e.target.value)}
-                value={precio}
+                value={values.precio || ""}
                 validationIcon={errorFields.includes("precio") || precio !== "" ? validarPrecio(precio) ? faCheck : faTimes : null }
                 errorMessage={(errorFields.includes("precio") || (precio !== "" && !validarPrecio(precio))) && !validarPrecio(precio) ? "*El precio debe ser un número mayor que cero" : "" }
             />
@@ -170,7 +190,7 @@ function UploadForm({ buttonLabel }) {
                 inputLabel="Marca:"
                 inputType="text"
                 onChange={(e) => setMarca(e.target.value)}
-                value={marca}
+                value={values.marca || ""}
                 validationIcon={errorFields.includes("marca") || marca !== "" ? validarMarca(marca) ? faCheck : faTimes : null }
                 errorMessage={(errorFields.includes("marca") || (marca !== "" && !validarMarca(marca))) && !validarMarca(marca) ? "*El campo marca no puede estar vacío": ""}
                 hideErrorMessage={marca.trim() !== "" && validarMarca(marca)} 
@@ -180,7 +200,7 @@ function UploadForm({ buttonLabel }) {
                 inputLabel="Categoría:"
                 inputType="text"
                 onChange={(e) => setCategoria(e.target.value)}
-                value={categoria}
+                value={values.categoria || ""}
                 validationIcon={errorFields.includes("categoria") || categoria !== "" ? validarMarca(categoria) ? faCheck : faTimes : null }
                 errorMessage={(errorFields.includes("categoria") || (categoria !== "" && !validarCategoria(categoria))) && !validarCategoria(categoria) ? "*El campo categoría no puede estar vacío" : "" }
             />
@@ -189,7 +209,7 @@ function UploadForm({ buttonLabel }) {
                 inputLabel="Descripción corta:"
                 inputType="text"
                 onChange={(e) => setDescripcionCorta(e.target.value)}
-                value={descripcionCorta}
+                value={values.descripcionCorta || ""}
                 validationIcon={errorFields.includes("descripcionCorta") || descripcionCorta !== "" ? validarDescripcionCorta(descripcionCorta) ? faCheck : faTimes : null }
                 errorMessage={(errorFields.includes("descripcionCorta") || (descripcionCorta !== "" && !validarDescripcionCorta( descripcionCorta ))) && !validarDescripcionCorta(descripcionCorta) ? "*La descripción corta debe tener al menos 10 caracteres" : "" }
             />
@@ -198,7 +218,7 @@ function UploadForm({ buttonLabel }) {
                 inputLabel="Descripción larga:"
                 inputType="text"
                 onChange={(e) => setDescripcionLarga(e.target.value)}
-                value={descripcionLarga}
+                value={values.descripcionLarga || ""}
                 validationIcon={errorFields.includes("descripcionLarga") || descripcionLarga !== "" ? validarDescripcionLarga(descripcionLarga) ? faCheck : faTimes : null }
                 errorMessage={(errorFields.includes("descripcionLarga") || (descripcionLarga !== "" && !validarDescripcionLarga( descripcionLarga ))) && !validarDescripcionLarga(descripcionLarga) ? "*La descripción larga debe tener al menos 20 caracteres" : "" }
             />
@@ -207,7 +227,7 @@ function UploadForm({ buttonLabel }) {
                 inputLabel="Edad desde:"
                 inputType="text"
                 onChange={(e) => setEdadDesde(e.target.value)}
-                value={edadDesde}
+                value={values.edadDesde || ""}
                 validationIcon={errorFields.includes("edadDesde") || edadDesde !== "" ? validarEdadDesde(edadDesde) ? faCheck : faTimes : null }
                 errorMessage={(errorFields.includes("edadDesde") || (edadDesde !== "" && !validarEdadDesde(edadDesde))) && !validarEdadDesde(edadDesde) ? "*La edad desde debe ser un número mayor que cero" : "" }
             />
@@ -216,7 +236,7 @@ function UploadForm({ buttonLabel }) {
                 inputLabel="Edad hasta:"
                 inputType="text"
                 onChange={(e) => setEdadHasta(e.target.value)}
-                value={edadHasta}
+                value={values.edadHasta || ""}
                 validationIcon={errorFields.includes("edadHasta") || edadHasta !== "" ? validarEdadHasta(edadHasta) ? faCheck : faTimes : null }
                 errorMessage={(errorFields.includes("edadHasta") || (edadHasta !== "" && !validarEdadHasta(edadHasta))) && !validarEdadHasta(edadHasta) ? "*La edad hasta debe ser un número mayor que cero" : "" }
             />
@@ -225,7 +245,7 @@ function UploadForm({ buttonLabel }) {
                 inputLabel="Stock:"
                 inputType="text"
                 onChange={(e) => setStock(e.target.value)}
-                value={stock}
+                value={values.stock || ""}
                 validationIcon={errorFields.includes("stock") || stock !== "" ? validarStock(stock) ? faCheck : faTimes : null }
                 errorMessage={(errorFields.includes("stock") || (stock !== "" && !validarStock(stock))) && !validarStock(stock) ? "*El stock debe ser un número mayor que cero" : "" }
             />

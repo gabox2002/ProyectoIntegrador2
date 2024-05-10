@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Text from '../components/Text'
-import Form from '../components/Form'
+import ContactForm from '../components/ContactForm'
 import InputGroup from '../components/InputGroup'
 
 import { useForm } from "../hooks/useForm";
@@ -18,7 +18,7 @@ function FormLayout({
     return (
         <div className='form-layout__container'>
             <Text renderAs="h2" content={title}/>
-            <Form 
+            <ContactForm 
                 onSubmit={() => {
                     setLoadingForm(true)
                     onSubmit(values)
@@ -44,7 +44,7 @@ function FormLayout({
                                 />
                         )
                 }
-            </Form>
+            </ContactForm>
         </div>
     )
 }

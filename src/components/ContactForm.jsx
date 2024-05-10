@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { postFormData } from '../util/api';
 import { postMessage } from '../util/api';
-
 import InputGroup from './InputGroup';
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Button from './Button';
@@ -13,16 +11,7 @@ function ContactForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // Verificar campos obligatorios
-        const camposObligatorios = ['nombre', 'correo', 'asunto', 'comentario'];
-        const camposVacios = camposObligatorios.filter((campo) => !values[campo]);
-        if (camposVacios.length > 0) {
-            alert(
-                `Por favor, complete los campos obligatorios: ${camposVacios.join(", ")}`
-            );
-            setLoading(false);
-            return;
-}
+
         // Validar el formulario antes de enviar
         const isValid = validateForm();
 
@@ -34,25 +23,30 @@ function ContactForm() {
         setLoading(true);
 
         try {
-            await postFormData(values);
+            // Ajustar los datos del formulario antes de enviarlos a la API
+            const adjustedData = {
+                name: values.nombre,
+                email: values.correo,
+                subject: values.asunto,
+                body: values.comentario
+            };
+    
+            await postMessage(adjustedData);
             alert('Mensaje enviado exitosamente.');
-
         } catch (error) {
-            console.error('Error al enviar el mensaje:', error);
+            console.error('Error al enviar el mensaje:', error.message);
             alert('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.');
         } finally {
             setLoading(false);
-            // Restablecer los campos del formulario
             setValues({
-                nombre: "",
-                correo: "",
-                comentario: "",
-                asunto: ""
-            }
-            
-        );
+                name: "",
+                email: "",
+                subject: "",
+                body: ""
+            });
         }
     };
+
     return (
         <form className="form__container" onSubmit={handleSubmit}>
             <InputGroup
