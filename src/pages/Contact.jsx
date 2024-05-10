@@ -1,4 +1,3 @@
-//Contact.jsx
 import Text from '../components/Text'
 import ContactForm from '../components/ContactForm'
 

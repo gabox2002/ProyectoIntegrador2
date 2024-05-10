@@ -1,10 +1,6 @@
 @import "../abstracts/variables";
 @import "../utilities/mixins";
 
-html {
-    margin: 0;
-    padding: 0;
-}
 .product-container {
     display: flex;
     flex-direction: column;
@@ -99,7 +95,10 @@ html {
                     }
                 }
             }
-        }
+        }.counter__container {
+                    margin-top: 40px;
+                    background-color: green;
+                }
         .details {
             padding: 30px 0px 0 0px;
             margin: 0 30px;
@@ -152,6 +151,7 @@ html {
                 margin-bottom: 24px;
                 margin-left: 50px;
                 gap: 40px;
+                
                 p {
                     font-weight: bold;
                     font-size: x-large;

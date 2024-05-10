@@ -20,22 +20,26 @@
         margin: 0 10px;
         @media (min-width: 768px) {
             justify-content: space-between;
+            margin: 0 0px;
+        }
+        @media (min-width: 1115px) {
+            justify-content: space-between;
             margin: 0 25px;
 
         }
-
         &-logo {
             display: none;
 
-            @media (min-width: 768px) {
+            @media (min-width: 890px) {
                 display: flex;
                 align-items: center;
                 text-align: center;
                 height: $navbar-height;
                 font-family: "matura", sans-serif;
-                font-weight: bold;
                 width: 100px;
                 font-size: large;
+                text-decoration: none;   
+                color: $black;             
                 &:hover {
                     color: $Bright-Blue-hover;
                 }
@@ -45,12 +49,12 @@
         &-items {
             display: none;
 
-            @media (min-width: 768px) {
+            @media (min-width: 890px) {
                 display: block;
             }
             .navbar__link {
                 text-decoration: none;
-                color: $Dark-grayish-blue;
+                color: $black;             
                 margin-top: 5px;
                 margin-left: 25px;
             }

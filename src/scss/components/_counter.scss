@@ -1,9 +1,11 @@
-
 .counter__container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0;
+    height: 0;
+    margin: 10px 0;
+    background-color: red;
+    
     .counter__count-text {
         margin: 0 1rem 10px 1rem;
         font-size: 1rem;
@@ -26,6 +28,5 @@
             background-color: lighten($color:$Very-Dark-Blue, $amount: 20);
         }
     }
-      
 }
   

@@ -13,7 +13,7 @@
             color: $Bright-Blue-hover;
             
         }
-        @media (min-width: 768px) {
+        @media (min-width: 890px) {
             display: none;
         }
     }
@@ -30,12 +30,11 @@
                     display: flex; 
                     align-items: center; 
                     padding: 10px 0; 
-                    margin: 20px 0 0px 40px;
+                    margin: 20px 0 0px 20px;
                     font-size: 16px; 
                     transition: color 0.3s ease; 
                     &:hover {
                         color: $Bright-Blue-hover;
-                        font-weight: bold;
                     }
                 }
             }

@@ -90,11 +90,11 @@
                             }
                         }
                     }
-
+                    
                     .modal__product-subtotal {
                         p {
                             font-style: italic;
-                            margin: 8px 0 1.1rem 0;
+                            margin: 8px 0 8px 0;
                             color: $Very-Dark-Blue;
                             span {
                                 font-weight: lighter;
@@ -103,10 +103,13 @@
                         }
                     }
                 }
+                .counter__container {
+                    margin-top: 20px;
+                }
             }
             .modal__total-container {
                 text-align: right;
-                padding-bottom: 0.2rem;
+                margin: 0.4rem 0;
                 padding-right: 2rem;
 
                 p {

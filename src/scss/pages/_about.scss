@@ -1,6 +1,18 @@
 @import "../utilities/mixins.scss";
+.about__container {
+    background-color: red;
+    h2 {
+    background-color: white;
+    text-align: center;
+    padding: 60px 0 60px 0;
+    margin: 0;
+    font-family: 'Matura', sans-serif;
+    font-weight: 400;
+    color: $Very-Dark-Blue;
+    text-decoration: underline;
 
-/* Sección historia, misión y visión */
+}
+}
 .history {
     background-color: hsl(207deg, 100%, 98%);
     @include section-style;
@@ -55,7 +67,6 @@
     }
 }
 
-/* Sección de enlace al cátalogo */
 .visit {
     background-color: hsl(0, 0%, 100%);
     display: flex;
@@ -100,7 +111,6 @@
         margin: 10px;
     }
 }
-/* Equipo de trabajo */
 .team {
     background-color: hsl(207deg, 100%, 98%);
     text-align: center;
@@ -152,13 +162,11 @@
                 margin-bottom: 10px;
                 object-fit: cover;
             }
-
             &--name {
                 font-family: "Poppins", sans-serif;
                 font-size: 1.2em;
                 margin-bottom: 8px;
             }
-
             &--position {
                 font-family: "Open Sans", sans-serif;
                 font-size: 0.9em;

@@ -6,7 +6,7 @@ import Text from '../components/Text';
 function About() {
     return (
         <>
-        <div className='home__container'>
+        <div className='about__container'>
             <Text renderAs="h2" content="¿Quiénes somos?"/>
          </div> 
         <main className="content">
