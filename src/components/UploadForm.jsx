@@ -21,7 +21,7 @@ function UploadForm({ buttonLabel }) {
     const [loading, setLoading] = useState(false);
     const [errorFields, setErrorFields] = useState([]);
     const [imagenCargada, setImagenCargada] = useState(false);
-    const { values, setValues } = useForm(); 
+    const { values } = useForm(); 
 
 
     const handleSubmit = async (event) => {
@@ -84,21 +84,18 @@ function UploadForm({ buttonLabel }) {
             } finally {
                 setLoading(false);
                 // Restablece los campos del formulario
-                setValues({
-                    name: "",
-                    email: "",
-                    subject: "",
-                    body: "",
-                    price: "",
-                    img1: "",
-                    stock: "",
-                    brand: "",
-                    category: "",
-                    shortDesc:"",
-                    longDesc:"",
-                    ageFrom: "",
-                    ageTo:"",
-                });
+                setNombre("");
+                setPrecio("");
+                setMarca("");
+                setCategoria("");
+                setDescripcionCorta("");
+                setDescripcionLarga("");
+                setEdadDesde("");
+                setEdadHasta("");
+                setStock("");
+                setEnvioGratis(false);
+                setFoto(null);
+                setImagenCargada(false);
             }
         } else {
             alert(
@@ -171,7 +168,7 @@ function UploadForm({ buttonLabel }) {
                 inputLabel="Nombre:"
                 inputType="text"
                 onChange={(e) => setNombre(e.target.value)}
-                value={values.nombre || ""}
+                value={nombre}
                 validationIcon={
                 errorFields.includes("nombre") || nombre !== "" ? validarNombre(nombre) ? faCheck : faTimes : null }
                 errorMessage={ (errorFields.includes("nombre") || (nombre !== "" && !validarNombre(nombre))) && !validarNombre(nombre) ? "*Debe tener al menos 3 caracteres" : ""}
@@ -181,7 +178,7 @@ function UploadForm({ buttonLabel }) {
                 inputLabel="Precio:"
                 inputType="text"
                 onChange={(e) => setPrecio(e.target.value)}
-                value={values.precio || ""}
+                value={precio}
                 validationIcon={errorFields.includes("precio") || precio !== "" ? validarPrecio(precio) ? faCheck : faTimes : null }
                 errorMessage={(errorFields.includes("precio") || (precio !== "" && !validarPrecio(precio))) && !validarPrecio(precio) ? "*El precio debe ser un número mayor que cero" : "" }
             />
@@ -190,7 +187,7 @@ function UploadForm({ buttonLabel }) {
                 inputLabel="Marca:"
                 inputType="text"
                 onChange={(e) => setMarca(e.target.value)}
-                value={values.marca || ""}
+                value={marca}
                 validationIcon={errorFields.includes("marca") || marca !== "" ? validarMarca(marca) ? faCheck : faTimes : null }
                 errorMessage={(errorFields.includes("marca") || (marca !== "" && !validarMarca(marca))) && !validarMarca(marca) ? "*El campo marca no puede estar vacío": ""}
                 hideErrorMessage={marca.trim() !== "" && validarMarca(marca)} 
@@ -200,7 +197,7 @@ function UploadForm({ buttonLabel }) {
                 inputLabel="Categoría:"
                 inputType="text"
                 onChange={(e) => setCategoria(e.target.value)}
-                value={values.categoria || ""}
+                value={categoria}
                 validationIcon={errorFields.includes("categoria") || categoria !== "" ? validarMarca(categoria) ? faCheck : faTimes : null }
                 errorMessage={(errorFields.includes("categoria") || (categoria !== "" && !validarCategoria(categoria))) && !validarCategoria(categoria) ? "*El campo categoría no puede estar vacío" : "" }
             />
@@ -209,7 +206,7 @@ function UploadForm({ buttonLabel }) {
                 inputLabel="Descripción corta:"
                 inputType="text"
                 onChange={(e) => setDescripcionCorta(e.target.value)}
-                value={values.descripcionCorta || ""}
+                value={descripcionCorta}
                 validationIcon={errorFields.includes("descripcionCorta") || descripcionCorta !== "" ? validarDescripcionCorta(descripcionCorta) ? faCheck : faTimes : null }
                 errorMessage={(errorFields.includes("descripcionCorta") || (descripcionCorta !== "" && !validarDescripcionCorta( descripcionCorta ))) && !validarDescripcionCorta(descripcionCorta) ? "*La descripción corta debe tener al menos 10 caracteres" : "" }
             />
@@ -218,7 +215,7 @@ function UploadForm({ buttonLabel }) {
                 inputLabel="Descripción larga:"
                 inputType="text"
                 onChange={(e) => setDescripcionLarga(e.target.value)}
-                value={values.descripcionLarga || ""}
+                value={descripcionLarga}
                 validationIcon={errorFields.includes("descripcionLarga") || descripcionLarga !== "" ? validarDescripcionLarga(descripcionLarga) ? faCheck : faTimes : null }
                 errorMessage={(errorFields.includes("descripcionLarga") || (descripcionLarga !== "" && !validarDescripcionLarga( descripcionLarga ))) && !validarDescripcionLarga(descripcionLarga) ? "*La descripción larga debe tener al menos 20 caracteres" : "" }
             />
@@ -227,7 +224,7 @@ function UploadForm({ buttonLabel }) {
                 inputLabel="Edad desde:"
                 inputType="text"
                 onChange={(e) => setEdadDesde(e.target.value)}
-                value={values.edadDesde || ""}
+                value={edadDesde}
                 validationIcon={errorFields.includes("edadDesde") || edadDesde !== "" ? validarEdadDesde(edadDesde) ? faCheck : faTimes : null }
                 errorMessage={(errorFields.includes("edadDesde") || (edadDesde !== "" && !validarEdadDesde(edadDesde))) && !validarEdadDesde(edadDesde) ? "*La edad desde debe ser un número mayor que cero" : "" }
             />
@@ -236,7 +233,7 @@ function UploadForm({ buttonLabel }) {
                 inputLabel="Edad hasta:"
                 inputType="text"
                 onChange={(e) => setEdadHasta(e.target.value)}
-                value={values.edadHasta || ""}
+                value={edadHasta}
                 validationIcon={errorFields.includes("edadHasta") || edadHasta !== "" ? validarEdadHasta(edadHasta) ? faCheck : faTimes : null }
                 errorMessage={(errorFields.includes("edadHasta") || (edadHasta !== "" && !validarEdadHasta(edadHasta))) && !validarEdadHasta(edadHasta) ? "*La edad hasta debe ser un número mayor que cero" : "" }
             />
@@ -245,7 +242,7 @@ function UploadForm({ buttonLabel }) {
                 inputLabel="Stock:"
                 inputType="text"
                 onChange={(e) => setStock(e.target.value)}
-                value={values.stock || ""}
+                value={stock}
                 validationIcon={errorFields.includes("stock") || stock !== "" ? validarStock(stock) ? faCheck : faTimes : null }
                 errorMessage={(errorFields.includes("stock") || (stock !== "" && !validarStock(stock))) && !validarStock(stock) ? "*El stock debe ser un número mayor que cero" : "" }
             />
@@ -283,5 +280,3 @@ function UploadForm({ buttonLabel }) {
 }
 
 export default UploadForm;
-
-
