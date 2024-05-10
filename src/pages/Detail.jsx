@@ -25,7 +25,7 @@ function Detail() {
     return (
         <div className="product-container">
             <div className="content">
-                <article className="gallery">
+                <div className="gallery">
                     <div className="gallery__image-container">
                         <img className="gallery_ppal" src={product[`img${currentImageIndex + 1}`]} alt={product.name} />
                     </div>
@@ -35,9 +35,9 @@ function Detail() {
                         <img className="gallery__thumbnails__thumbnail" src={product.img4} alt={product.name} onClick={() => changeImage(3)} />
                         <img className="gallery__thumbnails__thumbnail" src={product.img5} alt={product.name} onClick={() => changeImage(4)} />
                     </div>
-                </article>
+                </div>
 
-                <article className="details">
+                <div className="details">
                     <h2 className="details__category">Categoria: {product.category}</h2>
                     <h2 className="details__title">{product.name}</h2>
                     <p className="details__description">{product.longDesc}</p>
@@ -46,7 +46,7 @@ function Detail() {
                         <Counter id={id} />
                         <p>${product.price}</p>
                     </div>
-                </article>
+                </div>
             </div>
         </div>
     );
