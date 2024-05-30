@@ -1,23 +1,32 @@
 import axios from "axios";
 
 // Configuración para el servidor local
-const localAxiosInstance = axios.create({
-  baseURL: "http://localhost:3000/"
+const axiosInstance = axios.create({
+  
+  baseURL: process.env.REACT_APP_BASE_URL_API
 });
+// console.log(process.env.REACT_APP_BASE_URL_API)
 
 // Configuración para la API de MockAPI
-const mockApiAxiosInstance = axios.create({
-  baseURL: "https://65fa5bbf3909a9a65b1a4178.mockapi.io/"
-});
+// const axiosInstance = axios.create({
+//   baseURL: "https://65fa5bbf3909a9a65b1a4178.mockapi.io/"
+// });
 
 export const getProducts = async () => {
-  const resp = await mockApiAxiosInstance.get("/products");
-  return resp.data;
+  try {
+    const resp = await axiosInstance.get("/products");
+    //console.log("API response data:", resp.data); // Añadido para depuración
+
+    return resp.data;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [];
+  }
 };
 
 export const postMessage = async body => {
   try {
-    const resp = await mockApiAxiosInstance.post("/messages", body);
+    const resp = await axiosInstance.post("/messages", body);
     return resp.data;
   } catch (error) {
     throw new Error('Error al enviar el mensaje:', error);
@@ -25,21 +34,10 @@ export const postMessage = async body => {
 };
 
 export const postProducts = async body => {
-  const formData = new FormData();
-  Object.entries(body).forEach(([key, value]) => {
-    formData.append(key, value);
-  });
-  const resp = await mockApiAxiosInstance.post("/products", formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data'
-    }
-  });
-  return resp.data;
+  try {
+    const resp = await axiosInstance.post("/products", body);
+    return resp.data;
+  } catch (error) {
+    throw new Error('Error al enviar el producto:', error);
+  }
 };
-
-export const getProductById = async id => {
-  const resp = await mockApiAxiosInstance.get(`/products/${id}`);
-  return resp.data;
-};
-
-export default localAxiosInstance; // Exporta la instancia de Axios para el servidor local

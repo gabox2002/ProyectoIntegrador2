@@ -31,8 +31,8 @@
 .modal__overlay {
     .modal__container {
         display: flex;
-            flex-direction: column;
-            align-items: center;
+        flex-direction: column;
+        align-items: center;
         .modal__content {
             display: flex;
             flex-direction: column;
@@ -90,7 +90,7 @@
                             }
                         }
                     }
-                    
+
                     .modal__product-subtotal {
                         p {
                             font-style: italic;
@@ -107,73 +107,73 @@
                     margin-top: 20px;
                 }
             }
-            .modal__total-container {
-                text-align: right;
-                margin: 0.4rem 0;
-                padding-right: 2rem;
+        }
+        .modal__total-container {
+            text-align: right;
+            margin: 0.4rem 0;
+            padding-right: 2rem;
 
-                p {
-                    font-weight: bold;
-                    margin: 1.5rem 0;
-                    text-align: right;
-                    span {
-                        color: $black;
-                    }
+            p {
+                font-weight: bold;
+                margin: 1.5rem 0;
+                text-align: right;
+                span {
+                    color: $black;
                 }
             }
-            .modal__cupon {
-                display: flex;
-                justify-content: center;
-                margin-bottom: 20px;
-                text-align: center;
-                gap: 0px;
-                height: 1.75rem;
-                .cupon-input {
-                    width: 110px;
-                    font-size: 0.7rem;
-                }
-                .cupon-btn {
-                    background-color: $Bright-Blue-hover;
-                    border: none;
-                    border-radius: 0.1rem;
-                    color: $white;
-                    font-size: 0.7rem;
-                    width: auto;
-                    &:hover {
-                        background-color: lighten(
-                            $color: $Very-Dark-Blue,
-                            $amount: 20
-                        );
-                    }
+        }
+        .modal__cupon {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            text-align: center;
+            gap: 0px;
+            height: 1.75rem;
+            .cupon-input {
+                width: 110px;
+                font-size: 0.7rem;
+            }
+            .cupon-btn {
+                background-color: $Bright-Blue-hover;
+                border: none;
+                border-radius: 0.1rem;
+                color: $white;
+                font-size: 0.7rem;
+                width: auto;
+                &:hover {
+                    background-color: lighten(
+                        $color: $Very-Dark-Blue,
+                        $amount: 20
+                    );
                 }
             }
-            .modal__buttons {
-                display: flex;
-                justify-content: center;
-                gap: 20px;
-                .clear__button {
-                    background-color: lighten(#dc3545, 20%);
-                    color: white;
-                    border: none;
-                    padding: 10px 20px;
-                    border-radius: 5px;
-                    cursor: pointer;
-                    transition: background-color 0.3s ease;
-                    &:hover {
-                        background-color: #c82333;
-                    }
+        }
+        .modal__buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            .clear__button {
+                background-color: lighten(#dc3545, 20%);
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                &:hover {
+                    background-color: #c82333;
                 }
-                .checkout__button {
-                    background-color: lighten(#28a745, 20%);
-                    color: white;
-                    border: none;
-                    padding: 10px 20px;
-                    border-radius: 5px;
-                    cursor: pointer;
-                    transition: background-color 0.3s ease;
-                    &:hover {
-                        background-color: #218838;
-                    }
+            }
+            .checkout__button {
+                background-color: lighten(#28a745, 20%);
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                &:hover {
+                    background-color: #218838;
                 }
             }
         }

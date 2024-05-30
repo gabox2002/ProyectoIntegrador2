@@ -1,30 +1,26 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { CartContext } from '../context/CartContext';
-import Text from './Text';
-import Button from './Button';
+import React, { useContext } from "react";
+import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { CartContext } from "../context/CartContext";
+import Text from "./Text";
+import Button from "./Button";
 
-const INITIAL_STATE = 0;
-
-export default function Counter({ id }) {
+export default function Counter({ id, movieData }) {
     const { addMovie, removeMovie, moviesCartList } = useContext(CartContext);
-    const [count, setCount] = useState(INITIAL_STATE);
-
-    useEffect(() => {
-        const quantityInCart = moviesCartList.find(movie => movie.id === id)?.quantity || 0;
-        setCount(quantityInCart);
-    }, [moviesCartList, id]);
+    const itemInCart = moviesCartList.find((item) => item.id === id);
+    const initialQuantity = itemInCart ? itemInCart.quantity : 0;
 
     const decrement = () => {
-        if (count > 0) {
-            setCount(prevCount => prevCount - 1);
+        if (initialQuantity > 0) {
             removeMovie(id);
         }
     };
 
     const increment = () => {
-        setCount(prevCount => prevCount + 1);
-        addMovie({ id, quantity: count + 1 });
+        addMovie({
+            id,
+            movieData,
+            quantity: initialQuantity + 1,
+        });
     };
 
     return (
@@ -33,20 +29,14 @@ export default function Counter({ id }) {
                 icon={faMinus}
                 className="counter__btn"
                 action={decrement}
-                disabled={count === 0}
+                disabled={initialQuantity === 0}
             />
             <Text
                 renderAs="p"
-                content={count}
+                content={initialQuantity}
                 componentsProps={{ className: "counter__count-text" }}
             />
-            <Button
-                icon={faPlus}
-                className="counter__btn"
-                action={increment}
-                title={"Agregar al carrito"}
-
-            />
+            <Button icon={faPlus} className="counter__btn" action={increment} />
         </div>
     );
 }

@@ -1,12 +1,13 @@
 .home {
     &__title {
         text-align: center;
-        color: $Very-Dark-Blue;
         padding-top: 3%;
-        h2 {
+        text-decoration: none;
+        a {
             font-family: "matura";
             font-weight: 400;
             text-decoration: underline;
+            color: $Very-Dark-Blue;
         }
     }
     &__container {

@@ -14,6 +14,7 @@ function Card({
         <div className="card__container">
             <Link to={`/detail/${id}`}>
                 <div className='card__data'>
+                {/* <img src={imgUrl} alt={shortDesc} /> */}
                 <img src={img1} alt={shortDesc} />
                     {/* <Counter id={id}/> */}
                     <h2>{name} </h2>

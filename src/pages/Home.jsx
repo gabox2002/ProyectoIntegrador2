@@ -2,6 +2,8 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import ProductsWrapper from "../components/ProductsWrapper";
 import Text from "../components/Text";
+import { Link } from "react-router-dom";
+
 
 function Home() {
     const location = useLocation();
@@ -11,7 +13,7 @@ function Home() {
     return (
         <>
             <div className='home__title'>
-                <Text renderAs="h2" content="Lista de productos"/>
+               <Link to="/"><Text renderAs="h2" content="Lista de productos" className="title"/></Link> 
             </div>
             <div className='home__container'>
                 <ProductsWrapper searchTerm={searchTerm} />
