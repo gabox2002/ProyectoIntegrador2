@@ -1,16 +1,16 @@
 import axios from "axios";
 
 // Configuración para el servidor local
-// const axiosInstance = axios.create({
+const axiosInstance = axios.create({
   
-//   baseURL: process.env.REACT_APP_BASE_URL_API
-// });
+  baseURL: process.env.REACT_APP_BASE_URL_API
+});
 // console.log(process.env.REACT_APP_BASE_URL_API)
 
 // Configuración para la API de MockAPI
-const axiosInstance = axios.create({
-  baseURL: "https://65fa5bbf3909a9a65b1a4178.mockapi.io/"
-});
+// const axiosInstance = axios.create({
+//   baseURL: "https://65fa5bbf3909a9a65b1a4178.mockapi.io/"
+// });
 
 export const getProducts = async () => {
   try {
