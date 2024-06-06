@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import { getProducts } from "../util/api";
 import Counter from "../components/Counter";
 import { CartContext } from "../context/CartContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import ScrollToTopOnMount from '../components/ScrollToTopOnMount';
 
 function Detail() {
     const { id } = useParams();
@@ -28,7 +31,17 @@ function Detail() {
     const changeImage = (index) => {
         setCurrentImageIndex(index);
     };
+    const nextImage = () => {
+        setCurrentImageIndex((prevIndex) =>
+            prevIndex === 3 ? 0 : prevIndex + 1
+        );
+    };
 
+    const prevImage = () => {
+        setCurrentImageIndex((prevIndex) =>
+            prevIndex === 0 ? 3 : prevIndex - 1
+        );
+    };
     if (!movieData) {
         return <div>Cargando...</div>;
     }
@@ -43,38 +56,29 @@ function Detail() {
                             src={movieData[`img${currentImageIndex + 1}`]}
                             alt={movieData.name}
                         />
+                        <button onClick={prevImage} className="slider-button prev-button">
+                            <FontAwesomeIcon icon={faChevronLeft} />
+                        </button>
+                        <button onClick={nextImage} className="slider-button next-button">
+                            <FontAwesomeIcon icon={faChevronRight} />
+                        </button>
                     </div>
                     <div className="gallery__thumbnails">
-                        <img
-                            className="gallery__thumbnails__thumbnail"
-                            src={movieData.img2}
-                            alt={movieData.name}
-                            onClick={() => changeImage(1)}
-                        />
-                        <img
-                            className="gallery__thumbnails__thumbnail"
-                            src={movieData.img3}
-                            alt={movieData.name}
-                            onClick={() => changeImage(2)}
-                        />
-                        <img
-                            className="gallery__thumbnails__thumbnail"
-                            src={movieData.img4}
-                            alt={movieData.name}
-                            onClick={() => changeImage(3)}
-                        />
-                        <img
-                            className="gallery__thumbnails__thumbnail"
-                            src={movieData.img5}
-                            alt={movieData.name}
-                            onClick={() => changeImage(4)}
-                        />
+                    {[1, 2, 3, 4].map((index) => (
+                            <img
+                                key={index}
+                                className={`gallery__thumbnails__thumbnail ${currentImageIndex === index - 1 ? 'active' : ''}`}
+                                src={movieData[`img${index}`]}
+                                alt={movieData.name}
+                                onClick={() => changeImage(index - 1)}
+                            />
+                        ))}
                     </div>
                 </div>
 
                 <div className="details">
                     <h2 className="details__category">
-                        Categoria: {movieData.category}
+                        Categoría: {movieData.category}
                     </h2>
                     <h2 className="details__title">{movieData.name}</h2>
                     <p className="details__description">{movieData.longDesc}</p>
@@ -96,6 +100,7 @@ function Detail() {
                     </div>
                 </div>
             </div>
+            <ScrollToTopOnMount />
         </div>
     );
 }

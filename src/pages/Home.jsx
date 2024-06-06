@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import ProductsWrapper from "../components/ProductsWrapper";
 import Text from "../components/Text";
 import { Link } from "react-router-dom";
+import ScrollToTopOnMount from "../components/ScrollToTopOnMount"
 
 
 function Home() {
@@ -18,6 +19,7 @@ function Home() {
             <div className='home__container'>
                 <ProductsWrapper searchTerm={searchTerm} />
             </div> 
+            <ScrollToTopOnMount />
         </>
     );
 }

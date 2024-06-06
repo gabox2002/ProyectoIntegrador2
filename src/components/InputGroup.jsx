@@ -1,85 +1,62 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
-import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function InputGroup({
     id,
     inputLabel,
-    inputType = 'text',
-    onChange,
-    value,
-    validationIcon,
-    errorMessage,
-    icon,
+    inputType = "text",
+    onChange = () => {},
+    validation = () => "",
+    values,
+    showValidation
+
 }) {
-    const getValidationIconColor = () => {
-        if (validationIcon === faCheck) {
-            return 'valid-icon';
-        } else if (validationIcon === faTimes) {
-            return 'invalid-icon';
-        }
-        return '';
-    };
+    const [error, setError] = useState("")
+    const [touched, setTouched] = useState(false)
+   
+
+    const validatedOnChange = e => {
+        onChange(e)
+        setTouched(true)
+        const validationError = validation(e.target.value);
+        setError(validationError);    
+    }
+
+    const isValid = error === "" && values[id] !== "";
 
     return (
-        <div className='input-group__container'>
-            <div className={`label-icon-container ${getValidationIconColor()}`}>
-                <label htmlFor={id} className="label-text">{inputLabel}</label>
-                {validationIcon && (
-                    <span className='validation-icon'>
-                        <FontAwesomeIcon icon={validationIcon} />
-                    </span>
-                )}
-            </div>
-            {inputType === 'textarea' ? (
-                <textarea
-                    id={id}
-                    name={id}
-                    type={inputType}
-                    onChange={onChange}
-                    value={value}
-                    className='input-group__input'
-                ></textarea>
-            ) : inputType === 'file' ? ( 
-                <div className='file-input-container'>
-                    <input
-                        id={id}
-                        name={id}
-                        type={inputType}
-                        onChange={onChange}
-                        className='input-group__input file-input' 
-                    />
-                    {icon && (
-                        <button className='upload-icon' onClick={icon.action}>
-                            <FontAwesomeIcon icon={icon.icon} />
-                        </button>
-                    )}
-                </div>
-            ) : (
-                        <div className='password-container'>
-                            <input
-                                id={id}
-                                name={id}
-                                type={inputType}
-                                onChange={onChange}
-                                value={value}
-                                className='input-group__input password-input'
-                            />
-                            {icon && (
-                                <button className='eye-icon' onClick={icon.action}>
-                                    <FontAwesomeIcon icon={icon.icon} />
-                                </button>
-                            )}
-                        </div>
-                    )}
-            <div className="error-container">
-                {errorMessage && (
-                    <span className='error-message'>{errorMessage}</span>
-                )}
-            </div>
+        <div className={`input-group__container${inputType === "checkbox" ? " input-group__checkbox" : ""}`}>
+          <label htmlFor={id}>
+            {inputLabel}
+            {(showValidation || touched) && (
+              <FontAwesomeIcon 
+                icon={isValid ? faCheck : faTimes} 
+                className={`input-group__icon ${isValid ? "valid" : "invalid"}`} 
+              />
+            )}
+          </label>
+          {inputType === "textarea" ? (
+            <textarea
+              id={id}
+              name={id}
+              onChange={validatedOnChange}
+              value={values[id]}
+              className={`input-group__input${error ? " error" : ""}`}
+            ></textarea>
+          ) : (
+            <input
+              id={id}
+              name={id}
+              type={inputType}
+              onChange={validatedOnChange}
+              value={inputType !== "file" ? values[id] : ""}
+              className={`input-group__input${error ? " error" : ""}`}
+            />
+          )}
+          <span className="input-group__text-error">{error}</span>
         </div>
-    );
-}
+      );
+    }
 
-export default InputGroup;
-
+export default InputGroup

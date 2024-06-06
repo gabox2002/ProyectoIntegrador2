@@ -11,6 +11,32 @@
         margin-bottom: 10px;
         font-family: "matura", sans-serif;
         font-weight: 400;
+        
 
     }
+}
+
+/////////////////////////////////////
+/* styles.css */
+.input-group__input.error,
+.textarea.error {
+  border: 1px solid red;
+}
+
+.input-group__text-error {
+  margin-top: 5px;
+  color: red;
+  font-size: 10px;
+}
+
+.input-group__icon {
+  margin-left: 10px;
+}
+
+.input-group__icon.valid {
+  color: green;
+}
+
+.input-group__icon.invalid {
+  color: red;
 }

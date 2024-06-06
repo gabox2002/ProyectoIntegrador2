@@ -214,6 +214,7 @@ function Login() {
             </div>
             <div className="modal__login">
                 <Modal show={open} Close={handleCloseModal} direction="right">
+                <div>
                     <div className="modal__header">
                         <Button
                             icon={faArrowLeft}
@@ -362,6 +363,7 @@ function Login() {
                         </p>
                         <SocialMedia showMessage={false} />
                     </div>
+                </div>
                 </Modal>
             </div>
         </>

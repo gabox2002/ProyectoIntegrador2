@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../components/Button'; 
+import ScrollToTopOnMount from '../components/ScrollToTopOnMount';
 import images from '../components/Images';
 import Text from '../components/Text';
 
@@ -78,6 +79,7 @@ function About() {
                 </div>
             </section>
         </main>
+        <ScrollToTopOnMount />
         </>
     );
 }

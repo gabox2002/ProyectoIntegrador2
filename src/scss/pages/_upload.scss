@@ -22,7 +22,8 @@
 
     .input-group__container {
         @media screen and (min-width: 768px) {
-                width: calc(50% - 1rem);
+            justify-content: center;                
+            width: calc(50% - 1rem);
             }
     }
 }
