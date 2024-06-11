@@ -52,7 +52,7 @@ function Upload() {
         longDesc: {
             inputLabel: "Descripción larga",
             inputType: "textarea",
-            validation: validateLong
+            //validation: validateLong
         },
         delivery: {
             inputLabel: "Envío sin cargo",
