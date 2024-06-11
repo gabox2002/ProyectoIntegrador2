@@ -1,6 +1,6 @@
 import axios from "axios";
 
-console.log(process.env.REACT_APP_BASE_URL_API)
+//console.log(process.env.REACT_APP_BASE_URL_API)
 // Configuración para el servidor local
 const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL_API
@@ -35,11 +35,33 @@ export const postMessage = async (body) => {
     }
 };
 
+// export const postProducts = async (body) => {
+//     try {
+//         const formData = new FormData();
+//         Object.entries(body).forEach(([key, value]) => {
+//             formData.append(key, value);
+//         });
+
+//         const resp = await axiosInstance.post("/products", formData, {
+//             headers: {
+//                 "Content-Type": "multipart/form-data",
+//             },
+//         });
+//         return resp.data;
+//     } catch (error) {
+//         throw new Error("Error al enviar el producto:", error);
+//     }
+// };
+
 export const postProducts = async (body) => {
     try {
         const formData = new FormData();
         Object.entries(body).forEach(([key, value]) => {
-            formData.append(key, value);
+            if (key.startsWith('img') && value instanceof File) {
+                formData.append(key, value);
+            } else {
+                formData.append(key, value);
+            }
         });
 
         const resp = await axiosInstance.post("/products", formData, {
@@ -49,7 +71,8 @@ export const postProducts = async (body) => {
         });
         return resp.data;
     } catch (error) {
-        throw new Error("Error al enviar el producto:", error);
+        console.error(error); // Esto te dará más detalles del error en la consola del navegador
+        throw new Error("Error al enviar el producto:", error.message);
     }
 };
 
