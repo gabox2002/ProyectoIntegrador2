@@ -13,5 +13,5 @@ export const validateStock = value =>
 export const validateShort = value => 
     value.length < 10 ? "*El texto tiene que tener un valor mayor o igual a 10 caracteres." : "" ;
 
-export const validateLong = value => 
-    value.length < 30 ? "*El texto tiene que tener un valor menor o igual a 30 caracteres." : "" ;
+// export const validateLong = value => 
+//     value.length < 20 ? "*El texto tiene que tener un valor menor o igual a 20 caracteres." : "" ;

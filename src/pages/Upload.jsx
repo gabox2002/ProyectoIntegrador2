@@ -6,14 +6,14 @@ import { validateName, validateCategory, validateShort, validatePrice, validateS
 
 const INITIAL_STATE = {
     name: "",
-    price: 0,
-    stock: 0,
+    price: "",
+    stock: "",
     brand: "",
     category: "",
     shortDesc: "",
     longDesc: "",
-    ageFrom: 0,
-    ageTo: 0,
+    ageFrom: "",
+    ageTo: "",
     img1: "",
     img2: "",
     img3: "",
@@ -51,7 +51,8 @@ function Upload() {
         },
         longDesc: {
             inputLabel: "Descripción larga",
-            inputType: "textarea"
+            inputType: "textarea",
+            validation: () => ""         
         },
         delivery: {
             inputLabel: "Envío sin cargo",
