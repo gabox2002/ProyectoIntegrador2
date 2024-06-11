@@ -1,11 +1,10 @@
 import axios from "axios";
 
+console.log(process.env.REACT_APP_BASE_URL_API)
 // Configuración para el servidor local
 const axiosInstance = axios.create({
-
   baseURL: process.env.REACT_APP_BASE_URL_API
 });
-//console.log(process.env.REACT_APP_BASE_URL_API)
 
 // Configuración para la API de MockAPI
 // const axiosInstance = axios.create({
