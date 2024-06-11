@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import Button from "./Button";
-import Modal from "./Modal";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom"; 
+import React, { useState, useEffect } from "react"
+import Button from "./Button"
+import Modal from "./Modal"
+import { faSearch } from "@fortawesome/free-solid-svg-icons"
+import { useNavigate } from "react-router-dom"
 
 function SearchBar() {
     const [open, setOpen] = useState(false);

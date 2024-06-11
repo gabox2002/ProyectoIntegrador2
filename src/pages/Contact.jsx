@@ -1,7 +1,7 @@
 import React from 'react'
-import FormLayout from '../layout/FormLayout';
-import ScrollToTopOnMount from '../components/ScrollToTopOnMount';
-import { postMessage } from '../util/api';
+import FormLayout from '../layout/FormLayout'
+import ScrollToTopOnMount from '../components/ScrollToTopOnMount'
+import { postMessage } from '../util/api'
 import { validateName, validateEmail, validateSubject, validateBody } from '../util/contact-validations'
 
 const INITIAL_STATE = {

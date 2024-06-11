@@ -1,8 +1,8 @@
-import React from "react";
-import SocialMedia from "../components/SocialMedia";
-import { Link } from "react-router-dom";
-import ScrollToTop from "../components/ScrollToTop";
-import Button from "../components/Button";
+import React from "react"
+import SocialMedia from "../components/SocialMedia"
+import { Link } from "react-router-dom"
+import ScrollToTop from "../components/ScrollToTop"
+import Button from "../components/Button"
 
 function Footer() {
     return (
@@ -21,7 +21,7 @@ function Footer() {
                     <ul>
                         <li>Ingresar</li>
                         <li>Buscar</li>
-                        <li>Catálogo</li>
+                        <li><Link to="/">Catálogo</Link></li>
                         <li>Novedades</li>
                     </ul>
                 </div>

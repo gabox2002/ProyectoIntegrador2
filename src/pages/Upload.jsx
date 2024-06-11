@@ -69,9 +69,10 @@ function Upload() {
             inputType: "number",
             validation: () => "" 
         },
-        img1: {
+        image: { //OJO img1
             inputLabel: "Foto principal del producto",
             inputType: "file",
+            accept: "image/*",
             validation: () => "" 
         },
         img2: {

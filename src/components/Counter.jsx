@@ -1,24 +1,24 @@
-import React, { useContext } from "react";
-import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
-import { CartContext } from "../context/CartContext";
-import Text from "./Text";
-import Button from "./Button";
+import React, { useContext } from "react"
+import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons"
+import { CartContext } from "../context/CartContext"
+import Text from "./Text"
+import Button from "./Button"
 
-export default function Counter({ id, movieData }) {
+export default function Counter({ _id, movieData }) {
     const { addMovie, removeMovie, moviesCartList } = useContext(CartContext);
-    const itemInCart = moviesCartList.find((item) => item.id === id);
+    const itemInCart = moviesCartList.find((item) => item._id === _id);
     const initialQuantity = itemInCart ? itemInCart.quantity : 0;
 
     const decrement = () => {
         if (initialQuantity > 0) {
-            removeMovie(id);
+            removeMovie(_id);
         }
     };
 
     const increment = () => {
         addMovie({
-            id,
-            movieData,
+            _id,
+            movieData: movieData, 
             quantity: initialQuantity + 1,
         });
     };

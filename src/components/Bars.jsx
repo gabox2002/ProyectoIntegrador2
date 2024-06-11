@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { faBars, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { Link, useNavigate } from "react-router-dom"; 
-import Button from "./Button";
-import Modal from "./Modal";
-import SocialMedia from "./SocialMedia";
+import React, { useState, useEffect } from "react"
+import { faBars, faArrowRight } from "@fortawesome/free-solid-svg-icons"
+import { Link, useNavigate } from "react-router-dom"
+import Button from "./Button"
+import Modal from "./Modal"
+import SocialMedia from "./SocialMedia"
 
 function Bars() {
     const [open, setOpen] = useState(false);

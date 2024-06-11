@@ -47,8 +47,8 @@
             }
 
             .modal__product-image {
+                height: 100px;
                 width: 120px;
-                height: 120px;
                 margin-right: 0px;
             }
             .modal__product-details {
@@ -112,7 +112,6 @@
         .modal__total-container {
             text-align: right;
             margin: 0.4rem 0;
-            padding-right: 2rem;
 
             p {
                 font-weight: bold;

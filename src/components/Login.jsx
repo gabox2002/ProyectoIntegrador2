@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from "react";
-import {
-    faUser,
-    faArrowLeft,
-    faEye,
-    faEyeSlash,
-} from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
-import Button from "./Button";
-import Modal from "./Modal";
-import SocialMedia from "../components/SocialMedia";
+import React, { useState, useEffect } from "react"
+import { faUser, faArrowLeft, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
+import { Link } from "react-router-dom"
+import Button from "./Button"
+import Modal from "./Modal"
+import SocialMedia from "../components/SocialMedia"
 
 function Login() {
     const [open, setOpen] = useState(false);

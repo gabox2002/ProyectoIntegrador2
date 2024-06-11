@@ -1,15 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import Card from './Card';
-import { getProducts } from '../util/api';
+import React, { useEffect, useState } from 'react'
+import Card from './Card'
+import { getProducts } from '../util/api'
 
 function ProductsWrapper({ searchTerm }) {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([])
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         getProducts()
-            .then(data => setProducts(data))
-            .catch(err => console.error(err));
+            .then(data => {
+                if (Array.isArray(data)) {
+                    setProducts(data);
+                } else {
+                    console.error("La respuesta de la API no es un array:", data);
+                    setError("Error al obtener los productos");
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                setError("Error al obtener los productos");
+            });
     }, []);
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     // Filtrar los productos basados en el término de búsqueda
     const filteredProducts = products.filter(product =>
@@ -23,7 +38,7 @@ function ProductsWrapper({ searchTerm }) {
                     <p>Producto no encontrado</p>
                 ) : (
                     filteredProducts.map(product => (
-                        <Card key={product.id} {...product} />
+                        <Card key={product._id} {...product} />
                     ))
                 )}
             </div>

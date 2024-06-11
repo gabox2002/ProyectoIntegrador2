@@ -1,24 +1,40 @@
-import React, { useContext, useState, useEffect } from "react";
-import { faShoppingCart, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { CartContext } from "../context/CartContext";
+import React, { useContext, useState, useEffect } from "react"
+import { faShoppingCart, faArrowLeft } from "@fortawesome/free-solid-svg-icons"
+import { CartContext } from "../context/CartContext"
 
-import Button from "./Button";
-import Modal from "./Modal";
-import CartItem from "./CartItem";
-import { getProducts } from "../util/api";
+import Button from "./Button"
+import Modal from "./Modal"
+import CartItem from "./CartItem"
+import { getProducts } from "../util/api"
 
 function Cart() {
     const { moviesCartList, setMoviesCartList } = useContext(CartContext);
     const [open, setOpen] = useState(false);
     const [products, setProducts] = useState([]); // Estado para almacenar los productos
     const [loading, setLoading] = useState(false);
+    const [total, setTotal] = useState(0);
 
+
+    // Obtener los datos de los productos
     useEffect(() => {
-        // Obtener los datos de los productos
         getProducts()
             .then((products) => setProducts(products))
             .catch((error) => console.error("Error fetching products:", error));
     }, []);
+
+
+    // Calculamos el total sumando los subtotales de cada producto
+    useEffect(() => {
+        const cartTotal = moviesCartList.reduce(
+            (total, movie) => {
+                const movieData = products.find(product => product._id === movie._id);
+                return total + (movieData?.price || 0) * movie.quantity;
+            },
+            0
+        );
+        setTotal(cartTotal);
+    }, [moviesCartList, products]);
+
 
     // Función para abrir y cerrar el modal
     const handleToggleModal = () => {
@@ -35,13 +51,6 @@ function Cart() {
         handleCloseModal();
     };
 
-    // Función para calcular el total del carrito
-    const calculateTotal = () => {
-        return moviesCartList.reduce(
-            (total, movie) => total + movie.movieData.price * movie.quantity,
-            0
-        );
-    };
 
     // Función para realizar el checkout con el envío del formulario
     const handleCheckout = () => {
@@ -104,15 +113,15 @@ function Cart() {
                     {moviesCartList.map((data, index) => (
                         <CartItem
                             key={index}
-                            id={data.id}
+                            id={data._id}
                             movieData={products.find(
-                                (product) => product.id === data.id
+                                (product) => product._id === data._id
                             )}
                             quantity={data.quantity}
                         />
                     ))}
                     <div className="modal__total-container">
-                        <h3>Total: ${calculateTotal().toFixed(2)}</h3>
+                        <h3>Total: ${total.toFixed(2)}</h3>
                     </div>
                     <div className="modal__cupon">
                         <input

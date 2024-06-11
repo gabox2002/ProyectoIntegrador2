@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 function InputGroup({
     id,
@@ -9,8 +9,8 @@ function InputGroup({
     onChange = () => {},
     validation = () => "",
     values,
-    showValidation
-
+    showValidation,
+    ...props
 }) {
     const [error, setError] = useState("")
     const [touched, setTouched] = useState(false)
@@ -43,6 +43,7 @@ function InputGroup({
               onChange={validatedOnChange}
               value={values[id]}
               className={`input-group__input${error ? " error" : ""}`}
+              {...props}
             ></textarea>
           ) : (
             <input
@@ -52,6 +53,7 @@ function InputGroup({
               onChange={validatedOnChange}
               value={inputType !== "file" ? values[id] : ""}
               className={`input-group__input${error ? " error" : ""}`}
+              {...props}
             />
           )}
           <span className="input-group__text-error">{error}</span>

@@ -1,34 +1,45 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-// import Counter from './Counter'
+import Counter from './Counter'
+import { CartContext } from '../context/CartContext'
+
 
 function Card({
-    id,
+    _id,
     name,
     img1,
     price,
     shortDesc,
     delivery,
 }) {
+    const { addMovie } = useContext(CartContext);
+
     return (
         <div className="card__container">
-            <Link to={`/detail/${id}`}>
-                <div className='card__data'>
-                {/* <img src={imgUrl} alt={shortDesc} /> */}
-                <img src={img1} alt={shortDesc} />
-                    {/* <Counter id={id}/> */}
-                    <h2>{name} </h2>
-                    <div className='card__interno'>
-                        <div className='shortDesc'>
+            <div className='card__data'>
+                <Link to={`/detail/${_id}`}>
+                    <img src={img1} alt={shortDesc} />
+                </Link>
+                <div className='card__details'>
+                    <Link to={`/detail/${_id}`}>
+                        <h2>{name}</h2>
+                    </Link>
+                    <div className='shortDesc'>
+                        <Link to={`/detail/${_id}`}>
                             <p><span>{shortDesc}</span></p>
-                        </div>
-                        <div className='precio'>
-                            <p>${price}</p>
-                        </div>
+                        </Link>
                     </div>
-                    {delivery ? <p>Envío sin cargo.</p> : undefined}
                 </div>
-            </Link>
+                <div className='precio'>
+                    <Counter
+                        _id={_id}
+                        initialValue={0}
+                        addMovie={addMovie}
+                    />
+                    <p>${price}</p>
+                </div>
+                {delivery && <p>Envío sin cargo.</p>}
+            </div>
         </div>
     )
 }

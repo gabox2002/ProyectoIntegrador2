@@ -1,9 +1,9 @@
-import React from 'react';
-import { NavLink } from "react-router-dom";
-import Cart from "../components/Cart";
-import Login from '../components/Login';
-import Bars from '../components/Bars'; 
-import SearchBar from "../components/SearchBar"; 
+import React from 'react'
+import { NavLink } from "react-router-dom"
+import Cart from "../components/Cart"
+import Login from '../components/Login'
+import Bars from '../components/Bars'
+import SearchBar from "../components/SearchBar"
 
 function NavBar() {
     return (

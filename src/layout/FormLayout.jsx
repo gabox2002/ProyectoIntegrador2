@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import Text from '../components/Text';
-import Form from '../components/Form';
-import InputGroup from '../components/InputGroup';
-import { useForm } from "../hooks/useForm";
+import React, { useState } from 'react'
+import Text from '../components/Text'
+import Form from '../components/Form'
+import InputGroup from '../components/InputGroup'
+import { useForm } from "../hooks/useForm"
 
 function FormLayout({
     title,

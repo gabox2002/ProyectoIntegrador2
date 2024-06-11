@@ -1,18 +1,17 @@
-import React, { useContext } from "react";
-import Counter from "./Counter";
-import Button from "./Button";
-import { faClose } from "@fortawesome/free-solid-svg-icons";
-import { CartContext } from "../context/CartContext";
+import React, { useContext } from "react"
+import Counter from "./Counter"
+import Button from "./Button"
+import { faClose } from "@fortawesome/free-solid-svg-icons"
+import { CartContext } from "../context/CartContext"
 
 function CartItem({ id, movieData }) {
-    const { removeMovie, moviesCartList, setMoviesCartList, addMovie } =
-        useContext(CartContext);
-    const itemInCart = moviesCartList.find((item) => item.id === id);
+    const { removeMovie, moviesCartList, setMoviesCartList, addMovie } = useContext(CartContext);
+    const itemInCart = moviesCartList.find((item) => item._id === id);
     const quantity = itemInCart ? itemInCart.quantity : 0;
 
     // Función para eliminar completamente un producto del carrito
     const removeProductFromCart = (id) => {
-        const updatedCart = moviesCartList.filter((movie) => movie.id !== id);
+        const updatedCart = moviesCartList.filter((movie) => movie._id !== id);
         setMoviesCartList(updatedCart);
     };
 
@@ -38,7 +37,7 @@ function CartItem({ id, movieData }) {
                                             title="Eliminar producto"
                                             action={() =>
                                                 removeProductFromCart(
-                                                    movieData.id
+                                                    movieData._id
                                                 )
                                             }
                                             className="trash-button"
@@ -53,7 +52,7 @@ function CartItem({ id, movieData }) {
                                 </div>
                                 <Counter
                                     key={id}
-                                    id={id}
+                                    _id={id}
                                     movieData={movieData}
                                     initialValue={quantity}
                                     addMovie={addMovie}

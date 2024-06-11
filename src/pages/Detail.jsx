@@ -1,23 +1,23 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
-import { getProducts } from "../util/api";
-import Counter from "../components/Counter";
-import { CartContext } from "../context/CartContext";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import ScrollToTopOnMount from '../components/ScrollToTopOnMount';
+import React, { useState, useEffect, useContext } from "react"
+import { useParams } from "react-router-dom"
+import { getProducts } from "../util/api"
+import Counter from "../components/Counter"
+import { CartContext } from "../context/CartContext"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import ScrollToTopOnMount from '../components/ScrollToTopOnMount'
 
 function Detail() {
     const { id } = useParams();
     const [movieData, setProduct] = useState(null);
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const { addMovie, removeMovie, moviesCartList } = useContext(CartContext);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0); //
+    const { addMovie, removeMovie } = useContext(CartContext);
 
     useEffect(() => {
-        getProducts(id)
-            .then((movieData) => {
-                const productById = movieData.find(
-                    (movieData) => movieData.id === id
+        getProducts()
+            .then((products) => {
+                const productById = products.find(
+                    (product) => product._id === id
                 );
                 if (productById) {
                     setProduct(productById);
@@ -31,6 +31,7 @@ function Detail() {
     const changeImage = (index) => {
         setCurrentImageIndex(index);
     };
+
     const nextImage = () => {
         setCurrentImageIndex((prevIndex) =>
             prevIndex === 3 ? 0 : prevIndex + 1
@@ -42,6 +43,7 @@ function Detail() {
             prevIndex === 0 ? 3 : prevIndex - 1
         );
     };
+
     if (!movieData) {
         return <div>Cargando...</div>;
     }
@@ -64,7 +66,7 @@ function Detail() {
                         </button>
                     </div>
                     <div className="gallery__thumbnails">
-                    {[1, 2, 3, 4].map((index) => (
+                        {[1, 2, 3, 4].map((index) => (
                             <img
                                 key={index}
                                 className={`gallery__thumbnails__thumbnail ${currentImageIndex === index - 1 ? 'active' : ''}`}
@@ -87,12 +89,8 @@ function Detail() {
                     </p>
                     <div className="details__price">
                         <Counter
-                            id={id}
-                            movieData={movieData}
-                            initialValue={
-                                moviesCartList.find((item) => item.id === id)
-                                    ?.quantity || 0
-                            }
+                            _id={id}
+                            initialValue={0}
                             addMovie={addMovie}
                             removeMovie={removeMovie}
                         />

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
-import Button from "./Button";
-import "../scss/components/_scroll-to-top.scss";
+import React, { useState, useEffect } from "react"
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons"
+import Button from "./Button"
+import "../scss/components/_scroll-to-top.scss"
 
 function ScrollToTopButton() {
     const [isVisible, setIsVisible] = useState(false);
