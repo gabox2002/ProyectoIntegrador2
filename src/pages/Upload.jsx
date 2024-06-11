@@ -2,7 +2,7 @@ import React from 'react'
 import FormLayout from '../layout/FormLayout'
 import { postProducts } from '../util/api'
 import ScrollToTopOnMount from '../components/ScrollToTopOnMount'
-import { validateName, validateCategory, validateShort, validateLong, validatePrice, validateStock } from '../util/upload-validations'
+import { validateName, validateCategory, validateShort, validatePrice, validateStock } from '../util/upload-validations'
 
 const INITIAL_STATE = {
     name: "",
@@ -52,7 +52,6 @@ function Upload() {
         longDesc: {
             inputLabel: "Descripción larga",
             inputType: "textarea",
-            //validation: validateLong
         },
         delivery: {
             inputLabel: "Envío sin cargo",
