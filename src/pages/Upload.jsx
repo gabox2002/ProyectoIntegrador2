@@ -51,7 +51,7 @@ function Upload() {
         },
         longDesc: {
             inputLabel: "Descripción larga",
-            inputType: "textarea",
+            inputType: "textarea"
         },
         delivery: {
             inputLabel: "Envío sin cargo",
