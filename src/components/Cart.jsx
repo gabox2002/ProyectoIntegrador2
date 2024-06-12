@@ -1,3 +1,4 @@
+
 import React, { useContext, useState, useEffect } from "react"
 import { faShoppingCart, faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 import { CartContext } from "../context/CartContext"
@@ -5,11 +6,10 @@ import { CartContext } from "../context/CartContext"
 import Button from "./Button"
 import Modal from "./Modal"
 import CartItem from "./CartItem"
-import { getProducts, postCart} from "../util/api"
-
+import { getProducts } from "../util/api"
 
 function Cart() {
-    const { cart, productsCartList, setProductsCartList } = useContext(CartContext);
+    const { productsCartList, setProductsCartList } = useContext(CartContext);
     const [open, setOpen] = useState(false);
     const [products, setProducts] = useState([]); // Estado para almacenar los productos
     const [loading, setLoading] = useState(false);
@@ -50,21 +50,16 @@ function Cart() {
     };
 
     // Función para realizar el checkout con el envío del formulario
-    const handlePurchase = async () => {
-        try {
-            if (!cart || !cart.items) {
-                throw new Error("El carrito está vacío");
-            }
-            const response = await postCart(cart.items);
-            console.log("¡Su compra se ha realizado con éxito!", response);
-            // Puedes redirigir al usuario o mostrar un mensaje de éxito
-            setLoading(true); // Agregado para mostrar "Comprando..." en el botón
-        } catch (error) {
-            console.error("Error al realizar la compra:", error);
-            // Manejar el error, mostrar mensaje de error al usuario, etc.
-        }
-    };
+    const handleCheckout = () => {
+        setLoading(true);
 
+        setTimeout(() => {
+            setLoading(false);
+            alert("¡Su compra se ha realizado con éxito!");
+            setProductsCartList([]);
+            handleCloseModal();
+        }, 1000);
+    };
     // Función para cerrar el modal
     const handleCloseModal = () => {
         setOpen(false);
@@ -144,7 +139,7 @@ function Cart() {
                         <Button
                             label={loading ? "Comprando..." : "Comprar"}
                             type="submit"
-                            action={handlePurchase}
+                            action={handleCheckout}
                             className="checkout__button"
                             disabled={loading}
                         />
