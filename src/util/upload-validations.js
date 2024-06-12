@@ -15,3 +15,6 @@ export const validateShort = value =>
 
 // export const validateLong = value => 
 //     value.length < 20 ? "*El texto tiene que tener un valor menor o igual a 20 caracteres." : "" ;
+
+//export const validateImage = value =>  
+//   value.length < 0 ? "*Debes subir al menos una imagen." : ""; 

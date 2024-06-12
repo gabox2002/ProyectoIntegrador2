@@ -5,15 +5,15 @@ import { CartContext } from "../context/CartContext"
 import Button from "./Button"
 import Modal from "./Modal"
 import CartItem from "./CartItem"
-import { getProducts } from "../util/api"
+import { getProducts, postCart} from "../util/api"
+
 
 function Cart() {
-    const { moviesCartList, setMoviesCartList } = useContext(CartContext);
+    const { cart, productsCartList, setProductsCartList } = useContext(CartContext);
     const [open, setOpen] = useState(false);
     const [products, setProducts] = useState([]); // Estado para almacenar los productos
     const [loading, setLoading] = useState(false);
     const [total, setTotal] = useState(0);
-
 
     // Obtener los datos de los productos
     useEffect(() => {
@@ -22,19 +22,17 @@ function Cart() {
             .catch((error) => console.error("Error fetching products:", error));
     }, []);
 
-
     // Calculamos el total sumando los subtotales de cada producto
     useEffect(() => {
-        const cartTotal = moviesCartList.reduce(
-            (total, movie) => {
-                const movieData = products.find(product => product._id === movie._id);
-                return total + (movieData?.price || 0) * movie.quantity;
+        const cartTotal = productsCartList.reduce(
+            (total, prod) => {
+                const prodData = products.find(product => product._id === prod._id);
+                return total + (prodData?.price || 0) * prod.quantity;
             },
             0
         );
         setTotal(cartTotal);
-    }, [moviesCartList, products]);
-
+    }, [productsCartList, products]);
 
     // Función para abrir y cerrar el modal
     const handleToggleModal = () => {
@@ -47,22 +45,26 @@ function Cart() {
 
     // Función para vaciar el carrito
     const handleEmptyCart = () => {
-        setMoviesCartList([]);
+        setProductsCartList([]);
         handleCloseModal();
     };
 
-
     // Función para realizar el checkout con el envío del formulario
-    const handleCheckout = () => {
-        setLoading(true);
-
-        setTimeout(() => {
-            setLoading(false);
-            alert("¡Su compra se ha realizado con éxito!");
-            setMoviesCartList([]);
-            handleCloseModal();
-        }, 1000);
+    const handlePurchase = async () => {
+        try {
+            if (!cart || !cart.items) {
+                throw new Error("El carrito está vacío");
+            }
+            const response = await postCart(cart.items);
+            console.log("¡Su compra se ha realizado con éxito!", response);
+            // Puedes redirigir al usuario o mostrar un mensaje de éxito
+            setLoading(true); // Agregado para mostrar "Comprando..." en el botón
+        } catch (error) {
+            console.error("Error al realizar la compra:", error);
+            // Manejar el error, mostrar mensaje de error al usuario, etc.
+        }
     };
+
     // Función para cerrar el modal
     const handleCloseModal = () => {
         setOpen(false);
@@ -73,14 +75,14 @@ function Cart() {
     };
     // Efecto para cerrar el modal cuando el carrito está vacío
     useEffect(() => {
-        if (moviesCartList.length === 0) {
+        if (productsCartList.length === 0) {
             handleCloseModal();
         }
-    }, [moviesCartList]);
+    }, [productsCartList]);
 
     // Calculamos la cantidad total de productos en el carrito sumando las cantidades de todos los productos
-    const totalQuantity = moviesCartList.reduce(
-        (total, movie) => total + movie.quantity,
+    const totalQuantity = productsCartList.reduce(
+        (total, prod) => total + prod.quantity,
         0
     );
 
@@ -91,7 +93,7 @@ function Cart() {
                     icon={faShoppingCart}
                     className="cart__navbar-button"
                     action={handleToggleModal}
-                    disabled={!moviesCartList.length}
+                    disabled={!productsCartList.length}
                 />
                 {totalQuantity ? (
                     <div className="cart__badge">
@@ -106,15 +108,15 @@ function Cart() {
                             icon={faArrowLeft}
                             className="modal__close"
                             action={handleCloseModal}
-                            disabled={!moviesCartList.length}
+                            disabled={!productsCartList.length}
                         />
                         <p>Carrito de compras</p>
                     </div>
-                    {moviesCartList.map((data, index) => (
+                    {productsCartList.map((data, index) => (
                         <CartItem
                             key={index}
                             id={data._id}
-                            movieData={products.find(
+                            prodData={products.find(
                                 (product) => product._id === data._id
                             )}
                             quantity={data.quantity}
@@ -142,7 +144,7 @@ function Cart() {
                         <Button
                             label={loading ? "Comprando..." : "Comprar"}
                             type="submit"
-                            action={handleCheckout}
+                            action={handlePurchase}
                             className="checkout__button"
                             disabled={loading}
                         />

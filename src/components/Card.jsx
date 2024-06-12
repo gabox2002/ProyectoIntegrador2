@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import Counter from './Counter'
 import { CartContext } from '../context/CartContext'
 
-
 function Card({
     _id,
     name,
@@ -12,7 +11,7 @@ function Card({
     shortDesc,
     delivery,
 }) {
-    const { addMovie } = useContext(CartContext);
+    const { addProd } = useContext(CartContext);
 
     return (
         <div className="card__container">
@@ -34,7 +33,7 @@ function Card({
                     <Counter
                         _id={_id}
                         initialValue={0}
-                        addMovie={addMovie}
+                        addProd={addProd}
                     />
                     <p>${price}</p>
                 </div>

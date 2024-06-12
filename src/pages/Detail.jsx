@@ -1,26 +1,22 @@
-import React, { useState, useEffect, useContext } from "react"
-import { useParams } from "react-router-dom"
-import { getProducts } from "../util/api"
-import Counter from "../components/Counter"
-import { CartContext } from "../context/CartContext"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import ScrollToTopOnMount from '../components/ScrollToTopOnMount'
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { getProducts } from "../util/api";
+import Counter from "../components/Counter";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import ScrollToTopOnMount from '../components/ScrollToTopOnMount';
 
 function Detail() {
     const { id } = useParams();
-    const [movieData, setProduct] = useState(null);
-    const [currentImageIndex, setCurrentImageIndex] = useState(0); //
-    const { addMovie, removeMovie } = useContext(CartContext);
+    const [productData, setProductData] = useState(null);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     useEffect(() => {
         getProducts()
             .then((products) => {
-                const productById = products.find(
-                    (product) => product._id === id
-                );
+                const productById = products.find((product) => product._id === id);
                 if (productById) {
-                    setProduct(productById);
+                    setProductData(productById);
                 } else {
                     console.error(`Product with ID ${id} not found`);
                 }
@@ -44,7 +40,7 @@ function Detail() {
         );
     };
 
-    if (!movieData) {
+    if (!productData) {
         return <div>Cargando...</div>;
     }
 
@@ -55,8 +51,8 @@ function Detail() {
                     <div className="gallery__image-container">
                         <img
                             className="gallery_ppal"
-                            src={movieData[`img${currentImageIndex + 1}`]}
-                            alt={movieData.name}
+                            src={productData[`img${currentImageIndex + 1}`]}
+                            alt={productData.name}
                         />
                         <button onClick={prevImage} className="slider-button prev-button">
                             <FontAwesomeIcon icon={faChevronLeft} />
@@ -70,8 +66,8 @@ function Detail() {
                             <img
                                 key={index}
                                 className={`gallery__thumbnails__thumbnail ${currentImageIndex === index - 1 ? 'active' : ''}`}
-                                src={movieData[`img${index}`]}
-                                alt={movieData.name}
+                                src={productData[`img${index}`]}
+                                alt={productData.name}
                                 onClick={() => changeImage(index - 1)}
                             />
                         ))}
@@ -80,21 +76,16 @@ function Detail() {
 
                 <div className="details">
                     <h2 className="details__category">
-                        Categoría: {movieData.category}
+                        Categoría: {productData.category}
                     </h2>
-                    <h2 className="details__title">{movieData.name}</h2>
-                    <p className="details__description">{movieData.longDesc}</p>
+                    <h2 className="details__title">{productData.name}</h2>
+                    <p className="details__description">{productData.longDesc}</p>
                     <p className="details__range">
-                        Rango de edad: {movieData.ageFrom}-{movieData.ageTo}
+                        Rango de edad: {productData.ageFrom}-{productData.ageTo}
                     </p>
                     <div className="details__price">
-                        <Counter
-                            _id={id}
-                            initialValue={0}
-                            addMovie={addMovie}
-                            removeMovie={removeMovie}
-                        />
-                        <p>${movieData.price}</p>
+                        <Counter _id={id} />
+                        <p>${productData.price}</p>
                     </div>
                 </div>
             </div>

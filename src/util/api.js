@@ -76,19 +76,37 @@ export const postProducts = async (body) => {
 //     }
 // };
 
+// Función para crear un nuevo carrito
 export const postCart = async (body) => {
-    const resp = await axiosInstance.post("/cart", { items: body });
-    return resp.data;
+    try {
+        const resp = await axiosInstance.post("/cart", { items: body });
+        return resp.data;
+    } catch (error) {
+        console.error("Error creating cart:", error);
+        throw new Error("Error al crear el carrito.");
+    }
 };
+// export const postCart = async (body) => {
+//     const resp = await axiosInstance.post("/cart", { items: body });
+//     return resp.data;
+// };
 
+// Función para editar un carrito existente
 export const editCart = async (id, body) => {
+    
     const resp = await axiosInstance.put(`/cart/edit/${id}`, { items: body });
     return resp.data;
 };
 
+// Función para obtener un carrito por ID
 export const getCart = async (id) => {
-    const resp = await axiosInstance.get(`/cart/get/${id}`);
-    return resp.data;
+    try {
+        const resp = await axiosInstance.get(`/cart/get/${id}`);
+        return resp.data;
+    } catch (error) {
+        console.error("Error fetching cart:", error);
+        throw new Error("Error al obtener el carrito.");
+    }
 };
 
 export const postPreferenceMP = async (body) => {

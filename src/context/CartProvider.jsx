@@ -2,66 +2,68 @@ import React, { useState, useEffect } from "react"
 import { CartContext } from "./CartContext"
 
 const CartProvider = ({ children }) => {
-    const [moviesCartList, setMoviesCartList] = useState([]);
+    const [productsCartList, setProductsCartList] = useState([]);
 
     useEffect(() => {
         const storedCart = JSON.parse(localStorage.getItem("cartItems"));
         if (storedCart) {
-            setMoviesCartList(storedCart);
+            setProductsCartList(storedCart);
         }
     }, []);
 
     useEffect(() => {
-        localStorage.setItem("cartItems", JSON.stringify(moviesCartList));
-    }, [moviesCartList]);
+        localStorage.setItem("cartItems", JSON.stringify(productsCartList));
+    }, [productsCartList]);
 
-    const addMovie = (data) => {
-        const movieFinded = moviesCartList.find(
-            (movie) => movie._id === data._id
+    const addProd = (data) => {
+        const prodFinded = productsCartList.find(
+            (prod) => prod._id === data._id
         );
-        if (movieFinded) {
-            setMoviesCartList(
-                moviesCartList.map((movie) =>
-                    movie._id === data._id
-                        ? { ...movie, quantity: data.quantity }
-                        : movie
+        if (prodFinded) {
+            setProductsCartList(
+                productsCartList.map((prod) =>
+                    prod._id === data._id
+                        ? { ...prod, quantity: data.quantity }
+                        : prod
                 )
             );
         } else {
-            setMoviesCartList([...moviesCartList, data]);
+            setProductsCartList([...productsCartList, data]);
         }
         console.log("Elemento agregado al carrito:", data);
     };
 
-    const removeMovie = (id) => {
-        const movieFinded = moviesCartList.find((movie) => movie._id === id);
-        if (movieFinded?.quantity > 1) {
-            setMoviesCartList(
-                moviesCartList.map((movie) =>
-                    movie._id === id
+    const removeProd = (id) => {
+        const prodFinded = productsCartList.find((prod) => prod._id === id);
+        if (prodFinded?.quantity > 1) {
+            setProductsCartList(
+                productsCartList.map((prod) =>
+                    prod._id === id
                         ? {
-                              ...movie,
-                              quantity: movie.quantity - 1,
+                              ...prod,
+                              quantity: prod.quantity - 1,
                           }
-                        : movie
+                        : prod
                 )
             );
         } else {
-            setMoviesCartList(
-                moviesCartList.filter((movie) => movie._id !== id)
+            setProductsCartList(
+                productsCartList.filter((prod) => prod._id !== id)
             );
         }
-        const removedMovie = moviesCartList.find((movie) => movie._id === id);
-        console.log("Elemento quitado del carrito:", removedMovie);
+        const removedProd = productsCartList.find((prod) => prod._id === id);
+        if (removedProd) {
+            console.log("Elemento removido del carrito:", removedProd);
+        }
     };
 
     return (
         <CartContext.Provider
             value={{
-                moviesCartList,
-                setMoviesCartList,
-                addMovie,
-                removeMovie,
+                productsCartList,
+                setProductsCartList,
+                addProd,
+                removeProd,
             }}
         >
             {children}
