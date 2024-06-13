@@ -3,7 +3,7 @@
     h2 {
     background-color: hsl(207deg, 100%, 98%);
     text-align: center;
-    padding: 40px 0 0px 0;
+    padding: 40px 0 40px 0;
     margin: 0;
     font-family: 'Matura', sans-serif;
     font-weight: 400;
@@ -14,6 +14,8 @@
 }
 .history {
     background-color: hsl(207deg, 100%, 98%);
+    font-family: "kalam", sans-serif;
+
     @include section-style;
     @media (min-width: 768px) {
         flex-direction: row-reverse;
@@ -34,6 +36,7 @@
 
 .mission {
     background-color: hsl(0, 0%, 100%);
+    font-family: "kalam", sans-serif;
     @include section-style;
     @media (min-width: 768px) {
         flex-direction: row;
@@ -51,6 +54,7 @@
 
 .comunity {
     background-color: hsl(207deg, 100%, 98%);
+    font-family: "kalam", sans-serif;
     @include section-style;
     @media (min-width: 768px) {
         flex-direction: row-reverse;
@@ -74,6 +78,8 @@
     align-items: center;
     height: 200px;
     padding: 0px 0;
+    font-family: "kalam", sans-serif;
+
     @media (min-width: 768px) {
         height: 350px;
     }
@@ -162,12 +168,12 @@
                 object-fit: cover;
             }
             &--name {
-                font-family: "Poppins", sans-serif;
+                font-family: "kalam", sans-serif;
                 font-size: 1.2em;
                 margin-bottom: 8px;
             }
             &--position {
-                font-family: "Open Sans", sans-serif;
+                font-family: "kalam", sans-serif;
                 font-size: 0.9em;
                 color: #777;
             }

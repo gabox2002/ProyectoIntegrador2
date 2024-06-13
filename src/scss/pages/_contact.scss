@@ -1,41 +1,41 @@
 .contact__container  {
-    display: flex;
-    flex-direction: column;
-    justify-content: center ;
-    align-items: center;
-    margin: 20px 0 100px 0;
-    height: 100%; 
-    
-    h2 {
-      color: $Very-Dark-Blue;
-      margin-bottom: 40px;
-      font-family: "matura", sans-serif;
-      font-weight: 400;
-      text-decoration: underline;
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: center ;
+  align-items: center;
+  margin: 40px 0 100px 0;
+  height: 100%; 
+  
+  h2 {
+    color: $Very-Dark-Blue;
+    margin-bottom: 10px;
+    font-family: "matura", sans-serif;
+    font-weight: 400;
+    text-decoration: underline;
+  }
 }
 
 /////////////////////////////////////
 /* styles.css */
 .input-group__input.error,
 .textarea.error {
-  border: 1px solid red;
+border: 1px solid red;
 }
 
 .input-group__text-error {
-  margin-top: 5px;
-  color: red;
-  font-size: 10px;
+margin-top: 5px;
+color: red;
+font-size: 10px;
 }
 
 .input-group__icon {
-  margin-left: 10px;
+margin-left: 10px;
 }
 
 .input-group__icon.valid {
-  color: green;
+color: green;
 }
 
 .input-group__icon.invalid {
-  color: red;
+color: red;
 }

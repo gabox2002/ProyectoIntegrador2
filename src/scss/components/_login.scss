@@ -1,5 +1,6 @@
 .login__container {
     position: relative;
+    
     .login__navbar-button {
     background-color: transparent;
     border: none;
@@ -29,6 +30,8 @@
                     display: flex;
                     flex-direction: column;
                     align-items: center;
+                    font-family: "kalam", sans-serif;
+
                     .input-container {
                         display: flex;
                         flex-direction: column;
@@ -105,6 +108,8 @@
                     margin-bottom: 0;
                     justify-content: center;
                     font-size: 12px;
+                    font-family: "kalam", sans-serif;
+
                 }
 
                 .form-divider {

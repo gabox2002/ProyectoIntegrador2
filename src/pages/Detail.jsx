@@ -5,6 +5,8 @@ import Counter from "../components/Counter";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import ScrollToTopOnMount from '../components/ScrollToTopOnMount';
+import Text from "../components/Text"
+import { Link } from "react-router-dom"
 
 function Detail() {
     const { id } = useParams();
@@ -45,7 +47,11 @@ function Detail() {
     }
 
     return (
-        <div className="product-container">
+       
+        <div className="product-container"> 
+            <div className='product__title'>
+               <Link to="/"><Text renderAs="h4" content="Lista de productos >" className="title"/></Link> 
+            </div>
             <div className="content">
                 <div className="gallery">
                     <div className="gallery__image-container">

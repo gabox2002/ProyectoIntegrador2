@@ -44,6 +44,8 @@
                 align-items: center;
                 padding: 0;
                 border-bottom: 1px solid hsl(220deg, 14%, 75%);
+                font-family: "kalam", sans-serif;
+
             }
 
             .modal__product-image {
@@ -65,7 +67,7 @@
                         display: flex;
                         justify-content: space-between;
                         width: 100%;
-                        font-size: 18px;
+                        font-size: 16px;
                         .product-name {
                             font-weight: bold;
                             align-self: flex-start;
@@ -84,7 +86,8 @@
                     }
                     .modal__product-price {
                         p {
-                            margin: 8px 0;
+                            font-style: italic;
+                            margin: 5px 0;
                             span {
                                 font-weight: lighter;
                                 color: $black;
@@ -96,7 +99,6 @@
                         p {
                             font-style: italic;
                             margin: 8px 0 8px 0;
-                            color: $Very-Dark-Blue;
                             span {
                                 font-weight: lighter;
                                 color: $black;
@@ -112,9 +114,9 @@
         .modal__total-container {
             text-align: right;
             margin: 0.4rem 0;
-
+            font-size: larger;
+            font-weight: bold;
             p {
-                font-weight: bold;
                 margin: 1.5rem 0;
                 text-align: right;
                 span {
@@ -132,6 +134,9 @@
             .cupon-input {
                 width: 110px;
                 font-size: 0.7rem;
+                border: 1px solid rgb(10, 10, 10, 0.2);
+                text-align: center;
+
             }
             .cupon-btn {
                 background-color: $Bright-Blue-hover;

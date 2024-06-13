@@ -7,7 +7,6 @@
         height: 2.5rem;
         width: 2.5rem;
         color: $black;
-        
 
         &:hover {
             color: $Bright-Blue-hover;
@@ -33,6 +32,8 @@
                     margin: 20px 0 0px 20px;
                     font-size: 16px; 
                     transition: color 0.3s ease; 
+                    font-family: "kalam", sans-serif;
+
                     &:hover {
                         color: $Bright-Blue-hover;
                     }

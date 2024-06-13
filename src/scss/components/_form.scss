@@ -6,6 +6,8 @@
     gap: 1rem;
     width: 320px;
     margin-top: 20px;
+    font-family: "kalam", sans-serif;
+
     @media screen and (min-width: 768px) {
         width: 70%;
         max-width: 700px;    
@@ -115,7 +117,7 @@
 
 .form__button {
     align-items: flex-end;
-    font-size: x-small;
+    font-size: 12px;
     width: 7rem;
     padding: 10px;
     background-color: lighten(dodgerblue, 20%);
@@ -124,7 +126,7 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-
+    
     &:hover {
         background-color: #007bff;
     }
