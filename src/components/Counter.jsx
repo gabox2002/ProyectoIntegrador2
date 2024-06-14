@@ -38,4 +38,4 @@ export default function Counter({ _id }) {
             <Button icon={faPlus} className="counter__btn" action={increment} />
         </div>
     );
-}
+} 

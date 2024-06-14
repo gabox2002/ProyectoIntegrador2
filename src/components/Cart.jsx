@@ -1,4 +1,3 @@
-
 import React, { useContext, useState, useEffect } from "react"
 import { faShoppingCart, faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 import { CartContext } from "../context/CartContext"
@@ -6,12 +5,12 @@ import { CartContext } from "../context/CartContext"
 import Button from "./Button"
 import Modal from "./Modal"
 import CartItem from "./CartItem"
-import { getProducts } from "../util/api"
+import { getProducts, postCart } from "../util/api"
 
 function Cart() {
     const { productsCartList, setProductsCartList } = useContext(CartContext);
     const [open, setOpen] = useState(false);
-    const [products, setProducts] = useState([]); // Estado para almacenar los productos
+    const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [total, setTotal] = useState(0);
 
@@ -50,16 +49,34 @@ function Cart() {
     };
 
     // Función para realizar el checkout con el envío del formulario
-    const handleCheckout = () => {
+    const handleCheckout = async () => {
         setLoading(true);
+    
+        try {
+            console.log("Items a enviar al servidor:", productsCartList);
 
-        setTimeout(() => {
+            const response = await postCart({
+                items: productsCartList,
+                total: total,
+            });
+    
+            console.log('Datos enviados al servidor', response);
+    
+            if (response._id) { // Ajusta según la estructura de respuesta esperada
+                alert('¡Su compra se ha realizado con éxito!');
+                setProductsCartList([]);
+                handleCloseModal();
+            } else {
+                alert('Hubo un problema al procesar su compra.');
+            }
+        } catch (error) {
+            console.error('Error durante el checkout:', error);
+            alert('Hubo un problema al procesar su compra.');
+        } finally {
             setLoading(false);
-            alert("¡Su compra se ha realizado con éxito!");
-            setProductsCartList([]);
-            handleCloseModal();
-        }, 1000);
+        }
     };
+
     // Función para cerrar el modal
     const handleCloseModal = () => {
         setOpen(false);

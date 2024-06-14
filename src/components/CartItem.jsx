@@ -51,4 +51,3 @@ const CartItem = ({ id, prodData, quantity }) => {
     );
 };
 export default CartItem
-

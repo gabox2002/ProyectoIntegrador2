@@ -53,39 +53,16 @@ export const postProducts = async (body) => {
     }
 };
 
-// export const postProducts = async (body) => {
-//     try {
-//         const formData = new FormData();
-//         Object.entries(body).forEach(([key, value]) => {
-//             if (key.startsWith('img') && value instanceof File) {
-//                 formData.append(key, value);
-//             } else {
-//                 formData.append(key, value);
-//             }
-//         });
-
-//         const resp = await axiosInstance.post("/products", formData, {
-//             headers: {
-//                 "Content-Type": "multipart/form-data",
-//             },
-//         });
-//         return resp.data;
-//     } catch (error) {
-//         console.error(error); // Esto te dará más detalles del error en la consola del navegador
-//         throw new Error("Error al enviar el producto:", error.message);
-//     }
-// };
-
 // Función para crear un nuevo carrito
-export const postCart = async (body) => {
+export const postCart = async (data) => {
     try {
-        const resp = await axiosInstance.post("/cart", { items: body });
-        return resp.data;
+        const response = await axiosInstance.post('/cart', data);
+        return response.data;
     } catch (error) {
-        console.error("Error creating cart:", error);
-        throw new Error("Error al crear el carrito.");
+        throw new Error('Error al enviar el carrito al servidor:', error);
     }
 };
+
 // export const postCart = async (body) => {
 //     const resp = await axiosInstance.post("/cart", { items: body });
 //     return resp.data;
